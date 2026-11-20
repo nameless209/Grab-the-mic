@@ -1,0 +1,2507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GRAB THE MIC // Hot-Pink Karaoke Scramble</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Syne', 'Inter', 'sans-serif'],
+          },
+          colors: {
+            velvet: {
+              950: '#0d040c',
+              900: '#160715',
+              800: '#240b22',
+              700: '#361033',
+            },
+            hotpink: {
+              400: '#ff66b2',
+              500: '#ff1e8e',
+              600: '#e00070',
+            },
+            coral: {
+              400: '#ff7066',
+              500: '#ff4238',
+            }
+          },
+          animation: {
+            'pulse-fast': 'pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            'pop-in': 'popIn 0.38s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards',
+            'float-slow': 'floatSlow 7s ease-in-out infinite',
+            'shake': 'shake 0.45s cubic-bezier(.36,.07,.19,.97) both',
+          },
+          keyframes: {
+            popIn: {
+              '0%': { opacity: '0', transform: 'scale(0.65) translateY(16px)' },
+              '70%': { opacity: '1', transform: 'scale(1.06) translateY(-2px)' },
+              '100%': { opacity: '1', transform: 'scale(1) translateY(0)' },
+            },
+            floatSlow: {
+              '0%, 100%': { transform: 'translateY(0px) rotate(0deg)' },
+              '50%': { transform: 'translateY(-14px) rotate(3deg)' },
+            },
+            shake: {
+              '10%, 90%': { transform: 'translate3d(-2px, 0, 0)' },
+              '20%, 80%': { transform: 'translate3d(4px, 0, 0)' },
+              '30%, 50%, 70%': { transform: 'translate3d(-6px, 0, 0)' },
+              '40%, 60%': { transform: 'translate3d(6px, 0, 0)' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    /* Custom neon glows, glassmorphism & animated background orbs */
+    body {
+      background-color: #0d040c;
+      background-image:
+        radial-gradient(circle at 15% 15%, rgba(255, 30, 142, 0.25) 0%, transparent 42%),
+        radial-gradient(circle at 85% 20%, rgba(255, 66, 56, 0.20) 0%, transparent 40%),
+        radial-gradient(circle at 50% 90%, rgba(217, 70, 239, 0.22) 0%, transparent 50%);
+      color: #fff5fa;
+      overflow-x: hidden;
+    }
+
+    .glass-card {
+      background: rgba(30, 10, 28, 0.72);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 102, 178, 0.28);
+      box-shadow: 0 12px 40px -10px rgba(0, 0, 0, 0.65), inset 0 1px 0 0 rgba(255, 255, 255, 0.12);
+    }
+
+    .neon-stage {
+      background: linear-gradient(145deg, rgba(44, 12, 41, 0.88), rgba(20, 6, 19, 0.94));
+      border: 2px solid rgba(255, 30, 142, 0.65);
+      box-shadow:
+        0 0 35px rgba(255, 30, 142, 0.32),
+        0 0 80px rgba(255, 66, 56, 0.15),
+        inset 0 0 28px rgba(255, 30, 142, 0.15);
+    }
+
+    .neon-stage-urgent {
+      border-color: #ff4238 !important;
+      box-shadow:
+        0 0 45px rgba(255, 66, 56, 0.65),
+        0 0 95px rgba(255, 30, 142, 0.45),
+        inset 0 0 36px rgba(255, 66, 56, 0.28) !important;
+    }
+
+    .neon-text-pink {
+      text-shadow:
+        0 0 14px rgba(255, 30, 142, 0.85),
+        0 0 34px rgba(255, 30, 142, 0.55),
+        0 4px 12px rgba(0, 0, 0, 0.8);
+    }
+
+    .btn-hotpink {
+      background: linear-gradient(135deg, #ff1e8e 0%, #ff4238 100%);
+      box-shadow: 0 8px 25px -4px rgba(255, 30, 142, 0.65), inset 0 1px 1px rgba(255,255,255,0.4);
+      transition: all 0.16s ease;
+    }
+    .btn-hotpink:hover {
+      transform: translateY(-2px) scale(1.015);
+      box-shadow: 0 12px 32px -2px rgba(255, 30, 142, 0.85), inset 0 1px 1px rgba(255,255,255,0.5);
+    }
+    .btn-hotpink:active {
+      transform: translateY(1px) scale(0.985);
+    }
+
+    .btn-grab {
+      background: linear-gradient(135deg, #ffbe0b 0%, #fb5607 50%, #ff006e 100%);
+      box-shadow: 0 8px 28px -4px rgba(251, 86, 7, 0.65), inset 0 1px 1px rgba(255,255,255,0.5);
+      transition: all 0.16s ease;
+    }
+    .btn-grab:hover {
+      transform: translateY(-2px) scale(1.015);
+      box-shadow: 0 12px 34px -2px rgba(251, 86, 7, 0.85);
+    }
+    .btn-grab:active {
+      transform: translateY(1px) scale(0.985);
+    }
+
+    /* Progress ring smooth stroke transition */
+    #timerRingCircle {
+      transition: stroke-dashoffset 0.1s linear, stroke 0.25s ease;
+      transform: rotate(-90deg);
+      transform-origin: 50% 50%;
+    }
+
+    /* Custom subtle scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: rgba(20, 6, 19, 0.5);
+      border-radius: 999px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: rgba(255, 30, 142, 0.5);
+      border-radius: 999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgba(255, 30, 142, 0.85);
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col selection:bg-hotpink-500 selection:text-white">
+
+  <!-- Ambient Floating Neon Orbs -->
+  <div class="fixed inset-0 pointer-events-none overflow-hidden z-0">
+    <div class="absolute -top-24 -left-24 w-80 h-80 rounded-full bg-hotpink-500/15 blur-3xl animate-float-slow"></div>
+    <div class="absolute top-1/3 -right-28 w-96 h-96 rounded-full bg-coral-500/15 blur-3xl animate-float-slow" style="animation-delay: 2.5s;"></div>
+    <div class="absolute -bottom-24 left-1/3 w-80 h-80 rounded-full bg-fuchsia-500/15 blur-3xl animate-float-slow" style="animation-delay: 4s;"></div>
+  </div>
+
+  <!-- Top Navigation & Party Bar -->
+  <header class="relative z-20 w-full border-b border-pink-500/20 bg-velvet-950/75 backdrop-blur-md">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex flex-wrap items-center justify-between gap-3">
+      <!-- Brand Logo -->
+      <div class="flex items-center gap-3">
+        <button type="button" onclick="returnToSetup()" title="Return to Setup Menu"
+          class="w-11 h-11 rounded-2xl bg-gradient-to-br from-hotpink-500 to-coral-500 flex items-center justify-center shadow-lg shadow-hotpink-500/40 rotate-3 hover:rotate-0 hover:scale-105 active:scale-95 transition cursor-pointer">
+          <!-- Mic SVG Icon -->
+          <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="2.3" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 01-3-3V4.5a3 3 0 116 0v8.25a3 3 0 01-3 3z" />
+          </svg>
+        </button>
+        <div>
+          <div class="flex items-center gap-2">
+            <h1 class="font-display font-extrabold text-2xl sm:text-3xl tracking-tight bg-gradient-to-r from-white via-pink-200 to-hotpink-400 bg-clip-text text-transparent">
+              GRAB THE MIC
+            </h1>
+            <span class="px-2 py-0.5 text-[10px] font-extrabold uppercase tracking-widest rounded-full bg-hotpink-500/25 text-hotpink-400 border border-hotpink-500/40">
+              First to 50 Pts
+            </span>
+          </div>
+          <p class="text-xs text-pink-200/70 hidden sm:block">Grab the table mic first &amp; belt a song with the prompt word!</p>
+        </div>
+      </div>
+
+      <!-- Header Utility Controls -->
+      <div class="flex items-center gap-2 sm:gap-3">
+        <!-- End Game Button -->
+        <button id="endGameBtn" onclick="endGameAndDeclareWinner()" title="End game now and crown the highest-scoring team"
+          class="hidden px-3.5 py-2 rounded-xl bg-amber-500/25 hover:bg-amber-500/40 border border-amber-400/60 text-amber-200 text-xs sm:text-sm font-black flex items-center gap-1.5 transition active:scale-95 shadow-md shadow-amber-500/15">
+          <span>🏆</span>
+          <span>End Game</span>
+        </button>
+
+        <!-- Back to Setup Lobby Button -->
+        <button id="backToSetupBtn" onclick="returnToSetup()" title="Return to Game Setup Lobby"
+          class="hidden px-3 py-2 rounded-xl bg-velvet-800/90 hover:bg-velvet-700 border border-pink-500/30 text-pink-100 text-xs font-bold flex items-center gap-1.5 transition active:scale-95">
+          <span>⚙️</span>
+          <span class="hidden sm:inline">Setup</span>
+        </button>
+
+        <!-- Deck Counter Pill -->
+        <div class="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-xl bg-velvet-800/90 border border-pink-500/25 text-xs font-semibold text-pink-200">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+          <span>Deck #<strong id="deckNumberDisplay" class="text-hotpink-300">1</strong>: <strong id="deckRemainingCount" class="text-white">96</strong> words left</span>
+        </div>
+
+        <!-- Sound Toggle -->
+        <button id="soundToggleBtn" onclick="toggleAudio()" title="Toggle Party Sound Effects"
+          class="px-3.5 py-2 rounded-xl bg-velvet-800/90 hover:bg-velvet-700 border border-pink-500/30 text-pink-100 text-xs sm:text-sm font-bold flex items-center gap-2 transition active:scale-95">
+          <span id="soundIcon">🔊</span>
+          <span id="soundLabel" class="hidden sm:inline">SFX ON</span>
+        </button>
+
+        <!-- History Modal Trigger -->
+        <button onclick="openHistoryModal()"
+          class="px-3.5 py-2 rounded-xl bg-velvet-800/90 hover:bg-velvet-700 border border-pink-500/30 text-pink-100 text-xs sm:text-sm font-bold flex items-center gap-1.5 transition active:scale-95">
+          <span>🕒</span>
+          <span>History</span>
+          <span id="headerHistoryCountBadge" class="px-1.5 py-0.2 text-[10px] font-black rounded-full bg-hotpink-500/30 text-hotpink-200 border border-hotpink-500/40">0</span>
+        </button>
+
+        <!-- Rules Modal Trigger -->
+        <button onclick="openRulesModal()"
+          class="px-3.5 py-2 rounded-xl bg-hotpink-500/20 hover:bg-hotpink-500/30 border border-hotpink-500/45 text-pink-100 text-xs sm:text-sm font-bold flex items-center gap-1.5 transition active:scale-95">
+          <span>📜</span>
+          <span>Table Rules</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Toast Banner for Instant Feedback -->
+  <div id="toastContainer" class="fixed top-20 left-1/2 -translate-x-1/2 z-50 pointer-events-none flex flex-col items-center gap-2 w-full max-w-md px-4"></div>
+
+  <!-- ========================================================= -->
+  <!-- PAGE 1: GAME SETUP LOBBY (CHOOSE VIBE, PLAYERS & SETTINGS) -->
+  <!-- ========================================================= -->
+  <section id="setupScreen" class="relative z-10 flex-1 max-w-4xl w-full mx-auto px-4 sm:px-6 py-8 flex flex-col justify-center">
+    <div class="neon-stage rounded-3xl p-6 sm:p-10 space-y-8 animate-pop-in">
+      <!-- Setup Header -->
+      <div class="text-center space-y-2">
+        <span class="inline-block px-3.5 py-1 rounded-full bg-hotpink-500/25 border border-hotpink-400/50 text-xs font-black uppercase tracking-widest text-hotpink-300">
+          Step 1 • Configure Your Party
+        </span>
+        <h2 class="font-display font-extrabold text-3xl sm:text-5xl text-white neon-text-pink">
+          Create Your Grab The Mic
+        </h2>
+        <p class="text-xs sm:text-sm text-pink-200/80 max-w-xl mx-auto">
+          Pick the word deck vibe, add everyone around the table, and race to <strong class="text-amber-300">50 points</strong>!
+        </p>
+      </div>
+
+      <!-- 1. Choose Word Vibe -->
+      <div class="space-y-3">
+        <div class="flex items-center justify-between">
+          <label class="text-xs font-extrabold uppercase tracking-wider text-hotpink-300">
+            1. Choose the Vibe of the Words
+          </label>
+          <span id="setupDeckCountLabel" class="text-xs font-bold text-pink-200/80">96 words in deck</span>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+          <button type="button" onclick="selectSetupVibe('ALL')" data-setup-vibe="ALL"
+            class="setup-vibe-card p-4 rounded-2xl border-2 border-hotpink-400 bg-hotpink-500/25 text-left transition cursor-pointer shadow-lg shadow-hotpink-500/20">
+            <div class="text-xl mb-1">🎲</div>
+            <div class="font-display font-extrabold text-base text-white">All Mixed</div>
+            <p class="text-xs text-pink-100/80 mt-0.5">Every cute, easy, medium &amp; hard karaoke word shuffled together.</p>
+          </button>
+
+          <button type="button" onclick="selectSetupVibe('EASY')" data-setup-vibe="EASY"
+            class="setup-vibe-card p-4 rounded-2xl border border-pink-500/30 bg-velvet-900/80 hover:bg-velvet-800 text-left transition cursor-pointer">
+            <div class="text-xl mb-1">💖</div>
+            <div class="font-display font-extrabold text-base text-white">Easy Mode</div>
+            <p class="text-xs text-pink-200/75 mt-0.5">Cute &amp; ultra-common words like Love, Cute, Sweet, Baby, Hug &amp; Smile.</p>
+          </button>
+
+          <button type="button" onclick="selectSetupVibe('MEDIUM')" data-setup-vibe="MEDIUM"
+            class="setup-vibe-card p-4 rounded-2xl border border-pink-500/30 bg-velvet-900/80 hover:bg-velvet-800 text-left transition cursor-pointer">
+            <div class="text-xl mb-1">✨</div>
+            <div class="font-display font-extrabold text-base text-white">Medium Mode</div>
+            <p class="text-xs text-pink-200/75 mt-0.5">Fun, recognizable words &amp; lyric hooks like Mirror, Velvet, Midnight &amp; Trouble.</p>
+          </button>
+
+          <button type="button" onclick="selectSetupVibe('HARD')" data-setup-vibe="HARD"
+            class="setup-vibe-card p-4 rounded-2xl border border-pink-500/30 bg-velvet-900/80 hover:bg-velvet-800 text-left transition cursor-pointer">
+            <div class="text-xl mb-1">🔥</div>
+            <div class="font-display font-extrabold text-base text-white">Hard Mode</div>
+            <p class="text-xs text-pink-200/75 mt-0.5">Tricky, specific words for true music pros like Champagne, Silhouette &amp; Gravity.</p>
+          </button>
+
+          <!-- Timer & Chaos Options Card -->
+          <div class="sm:col-span-2 p-4 rounded-2xl border border-pink-500/25 bg-velvet-950/75 flex flex-col justify-between gap-3">
+            <div>
+              <label for="setupTimerInput" class="block text-[11px] font-extrabold uppercase tracking-wider text-pink-300 mb-1.5">
+                ⏱️ Mic Grab Timer (Seconds)
+              </label>
+              <div class="flex items-center gap-2">
+                <input id="setupTimerInput" type="number" min="3" max="120" value="8" oninput="syncSetupTimer()"
+                  class="w-20 bg-velvet-900 border border-pink-500/45 focus:border-hotpink-400 rounded-xl px-3 py-2 text-sm font-black text-white text-center focus:outline-none" />
+                <div class="flex flex-wrap gap-1">
+                  <button type="button" onclick="setQuickSetupTimer(5)" class="px-2 py-1.5 rounded-lg bg-velvet-800 hover:bg-hotpink-500/35 border border-pink-500/30 text-[11px] font-extrabold text-pink-100 transition">5s</button>
+                  <button type="button" onclick="setQuickSetupTimer(8)" class="px-2 py-1.5 rounded-lg bg-velvet-800 hover:bg-hotpink-500/35 border border-pink-500/30 text-[11px] font-extrabold text-pink-100 transition">8s</button>
+                  <button type="button" onclick="setQuickSetupTimer(12)" class="px-2 py-1.5 rounded-lg bg-velvet-800 hover:bg-hotpink-500/35 border border-pink-500/30 text-[11px] font-extrabold text-pink-100 transition">12s</button>
+                  <button type="button" onclick="setQuickSetupTimer(15)" class="px-2 py-1.5 rounded-lg bg-velvet-800 hover:bg-hotpink-500/35 border border-pink-500/30 text-[11px] font-extrabold text-pink-100 transition">15s</button>
+                  <button type="button" onclick="setQuickSetupTimer(20)" class="px-2 py-1.5 rounded-lg bg-velvet-800 hover:bg-hotpink-500/35 border border-pink-500/30 text-[11px] font-extrabold text-pink-100 transition">20s</button>
+                </div>
+              </div>
+            </div>
+            <label class="flex items-center gap-2 cursor-pointer select-none">
+              <input type="checkbox" id="setupChaosToggle" checked onchange="syncSetupChaos()" class="accent-hotpink-500 w-4 h-4 rounded cursor-pointer" />
+              <span class="text-xs font-bold text-pink-100">🎲 Enable Chaos Twists</span>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. Players / Teams Setup -->
+      <div class="space-y-3">
+        <label class="block text-xs font-extrabold uppercase tracking-wider text-hotpink-300">
+          2. Who's Playing Around the Table?
+        </label>
+        <form onsubmit="addSetupPlayer(event)" class="flex items-center gap-2">
+          <input id="setupPlayerInput" type="text" maxlength="20" placeholder="Enter player or team name..."
+            class="flex-1 bg-velvet-950/90 border border-pink-500/35 focus:border-hotpink-400 rounded-xl px-4 py-3 text-sm text-white placeholder-pink-300/45 focus:outline-none" />
+          <button type="submit"
+            class="px-5 py-3 rounded-xl bg-velvet-800 hover:bg-hotpink-500/40 border border-hotpink-400/50 text-xs sm:text-sm font-extrabold uppercase tracking-wider text-white transition shrink-0">
+            + Add Player
+          </button>
+        </form>
+
+        <div id="setupPlayersList" class="flex flex-wrap gap-2 pt-1">
+          <!-- Populated dynamically -->
+        </div>
+      </div>
+
+      <!-- Launch Button -->
+      <div class="pt-2">
+        <button type="button" onclick="startGameFromSetup()"
+          class="btn-hotpink w-full py-4 sm:py-5 px-6 rounded-2xl font-display font-extrabold text-lg sm:text-xl uppercase tracking-wider text-white flex items-center justify-center gap-3 cursor-pointer">
+          <span>🎤 START GRAB THE MIC!</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================= -->
+  <!-- PAGE 2: ACTIVE GAME STAGE & SCOREBOARD                    -->
+  <!-- ========================================================= -->
+  <main id="gameScreen" class="hidden relative z-10 flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 py-5 grid grid-cols-1 lg:grid-cols-12 gap-5 items-start">
+
+    <!-- LEFT / TOP PRIMARY STAGE (7 cols on desktop) -->
+    <section class="lg:col-span-7 flex flex-col gap-5">
+
+      <!-- Round Settings Strip -->
+      <div class="glass-card rounded-2xl p-3.5 sm:p-4 flex flex-wrap items-center justify-between gap-3">
+        <!-- Category Filter -->
+        <div class="flex flex-wrap items-center gap-1.5">
+          <span class="text-xs font-bold uppercase tracking-wider text-pink-300/80 mr-1">Mode:</span>
+          <button onclick="setDifficulty('ALL')" data-diff="ALL" class="diff-btn px-3 py-1.5 rounded-xl text-xs font-extrabold bg-hotpink-500 text-white shadow-md shadow-hotpink-500/30 transition">
+            🎲 All Mixed
+          </button>
+          <button onclick="setDifficulty('EASY')" data-diff="EASY" class="diff-btn px-3 py-1.5 rounded-xl text-xs font-bold bg-velvet-800/80 text-pink-200 hover:bg-velvet-700 border border-pink-500/20 transition">
+            💖 Easy
+          </button>
+          <button onclick="setDifficulty('MEDIUM')" data-diff="MEDIUM" class="diff-btn px-3 py-1.5 rounded-xl text-xs font-bold bg-velvet-800/80 text-pink-200 hover:bg-velvet-700 border border-pink-500/20 transition">
+            ✨ Medium
+          </button>
+          <button onclick="setDifficulty('HARD')" data-diff="HARD" class="diff-btn px-3 py-1.5 rounded-xl text-xs font-bold bg-velvet-800/80 text-pink-200 hover:bg-velvet-700 border border-pink-500/20 transition">
+            🔥 Hard
+          </button>
+        </div>
+
+        <!-- Timer & Chaos Modifier Controls -->
+        <div class="flex flex-wrap items-center gap-2 sm:gap-3">
+          <div class="flex items-center gap-1.5 bg-velvet-900/90 px-2.5 py-1.5 rounded-xl border border-pink-500/25">
+            <span class="text-xs font-bold text-pink-300">⏱️ Grab Timer:</span>
+            <input id="timerDurationInput" type="number" min="3" max="120" value="8" onchange="updateBaseDuration()"
+              class="w-12 bg-velvet-800 border border-pink-500/30 rounded-lg px-1.5 py-0.5 text-center text-white text-xs font-extrabold focus:outline-none focus:border-hotpink-400" />
+            <span class="text-xs font-bold text-pink-300">s</span>
+          </div>
+
+          <label class="flex items-center gap-2 cursor-pointer bg-velvet-900/90 px-3 py-1.5 rounded-xl border border-pink-500/25 select-none">
+            <input type="checkbox" id="chaosTwistsToggle" checked class="accent-hotpink-500 w-4 h-4 rounded cursor-pointer" />
+            <span class="text-xs font-bold text-pink-200">🎲 Chaos Twists</span>
+          </label>
+        </div>
+
+        <!-- Custom Word Drop Bar -->
+        <form onsubmit="dropCustomWord(event)" class="w-full pt-2.5 border-t border-pink-500/20 flex items-center gap-2">
+          <span class="text-xs font-extrabold uppercase tracking-wider text-hotpink-300 shrink-0">✍️ Custom Word:</span>
+          <input id="customWordInput" type="text" maxlength="24" autocomplete="off"
+            placeholder="Type any word to drop on stage..."
+            class="flex-1 bg-velvet-950/90 border border-pink-500/35 focus:border-hotpink-400 rounded-xl px-3.5 py-1.5 text-xs sm:text-sm font-bold text-white placeholder-pink-300/45 focus:outline-none uppercase" />
+          <button type="submit"
+            class="px-3.5 py-1.5 rounded-xl bg-velvet-800 hover:bg-hotpink-500/40 border border-hotpink-400/50 text-xs font-extrabold uppercase tracking-wider text-white transition shrink-0 cursor-pointer">
+            Drop Word
+          </button>
+        </form>
+      </div>
+
+      <!-- BIG TV-READY PROMPT STAGE -->
+      <div id="promptStageCard" class="neon-stage rounded-3xl p-6 sm:p-8 flex flex-col items-center justify-between text-center relative overflow-hidden min-h-[370px] sm:min-h-[420px] transition-all duration-300">
+
+        <!-- Top Stage Badges: Round Counter + Active Modifier Banner -->
+        <div class="w-full flex flex-wrap items-center justify-between gap-2 z-10">
+          <span id="roundBadge" class="px-3.5 py-1 rounded-full bg-velvet-900/90 border border-pink-500/35 text-xs font-extrabold tracking-widest uppercase text-pink-300">
+            ROUND #0 • READY
+          </span>
+
+          <div id="modifierBanner" class="px-4 py-1.5 rounded-full bg-pink-500/20 border border-pink-400/40 text-xs sm:text-sm font-black tracking-wider uppercase text-pink-100 flex items-center gap-2 shadow-sm">
+            <span>🎤</span>
+            <span id="modifierText">STANDARD MIC SCRAMBLE</span>
+          </div>
+        </div>
+
+        <!-- Center Word + Countdown Ring -->
+        <div class="my-6 flex flex-col items-center justify-center z-10 w-full">
+          <!-- Category Pill -->
+          <div id="wordCategoryPill" class="mb-3 px-3 py-0.5 rounded-full text-[11px] font-extrabold uppercase tracking-widest bg-white/10 text-pink-200 border border-white/15">
+            PLACE MIC IN CENTER OF TABLE
+          </div>
+
+          <!-- Giant Prompt Word -->
+          <div id="promptWordWrapper" class="w-full px-2">
+            <h2 id="promptWordDisplay" class="font-display font-extrabold text-5xl sm:text-7xl md:text-8xl tracking-tight uppercase text-white neon-text-pink break-words leading-none select-none">
+              READY?
+            </h2>
+          </div>
+
+          <!-- Sub-instruction / Active Timer Visual -->
+          <div id="timerVisualContainer" class="mt-6 flex items-center justify-center gap-4">
+            <!-- SVG Ring Countdown -->
+            <div class="relative w-24 h-24 sm:w-28 sm:h-28 flex items-center justify-center">
+              <svg class="w-full h-full" viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="42" stroke="rgba(255, 102, 178, 0.2)" stroke-width="8" fill="rgba(13, 4, 12, 0.65)" />
+                <circle id="timerRingCircle" cx="50" cy="50" r="42" stroke="#ff1e8e" stroke-width="8" stroke-linecap="round" fill="transparent"
+                  stroke-dasharray="263.89" stroke-dashoffset="0" />
+              </svg>
+              <div class="absolute inset-0 flex flex-col items-center justify-center">
+                <span id="timerSecondsDisplay" class="font-display font-extrabold text-2xl sm:text-3xl text-white leading-none">8.0</span>
+                <span id="timerStatusLabel" class="text-[10px] font-bold uppercase tracking-widest text-pink-300 mt-1">SEC</span>
+              </div>
+            </div>
+
+            <!-- Live Status Callout -->
+            <div class="text-left max-w-[230px]">
+              <p id="stageCalloutTitle" class="text-sm sm:text-base font-extrabold text-white">
+                Hands off the mic!
+              </p>
+              <p id="stageCalloutSub" class="text-xs text-pink-200/80 mt-0.5 leading-relaxed">
+                Hit <strong class="text-hotpink-400">DROP NEXT WORD</strong> (or press <kbd class="px-1.5 py-0.5 bg-velvet-800 rounded border border-pink-500/30 text-[10px]">Space</kbd>) to start the scramble.
+              </p>
+              <button type="button" id="stopTimerBtn" onclick="toggleStageTimerStartStop()"
+                class="mt-2 px-3 py-1 rounded-xl bg-velvet-900/95 hover:bg-red-500/35 border border-pink-500/35 hover:border-red-400/60 text-[11px] font-extrabold text-pink-100 hover:text-red-200 transition inline-flex items-center gap-1.5 cursor-pointer">
+                <span id="stopTimerBtnIcon">⏹</span>
+                <span id="stopTimerBtnText">Stop Timer</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- NOW PLAYING CELEBRATION BAR (Plays chosen song in background until next word) -->
+          <div id="nowPlayingBar" class="hidden mt-5 w-full max-w-md px-4 py-2.5 rounded-2xl bg-gradient-to-r from-hotpink-500/25 via-velvet-900/95 to-coral-500/25 border border-hotpink-400/60 shadow-lg shadow-hotpink-500/20 flex items-center justify-between gap-3 animate-pop-in">
+            <div class="flex items-center gap-3 min-w-0 text-left">
+              <img id="nowPlayingArt" src="" alt="Album Art" class="w-10 h-10 rounded-xl object-cover border border-white/20 shrink-0 hidden" />
+              <div id="nowPlayingFallbackIcon" class="w-10 h-10 rounded-xl bg-hotpink-500/30 flex items-center justify-center text-lg shrink-0">🎶</div>
+              <div class="min-w-0">
+                <div class="flex items-center gap-1.5">
+                  <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                  <span class="text-[10px] font-black uppercase tracking-widest text-hotpink-300">Now Playing • Sing Along!</span>
+                </div>
+                <p id="nowPlayingTitle" class="text-xs sm:text-sm font-extrabold text-white truncate">Song Title - Artist</p>
+              </div>
+            </div>
+            <button type="button" onclick="stopBackgroundCelebration()" title="Stop Background Music"
+              class="px-2.5 py-1.5 rounded-xl bg-velvet-800/90 hover:bg-red-500/40 border border-pink-500/35 text-[11px] font-extrabold text-pink-100 shrink-0 transition">
+              ⏹ Stop
+            </button>
+          </div>
+        </div>
+
+        <!-- Primary Action Buttons -->
+        <div class="w-full grid grid-cols-1 sm:grid-cols-2 gap-3 z-10">
+          <button id="dropWordBtn" onclick="dropNextWord()"
+            class="btn-hotpink w-full py-4 px-5 rounded-2xl font-display font-extrabold text-base sm:text-lg uppercase tracking-wider text-white flex items-center justify-center gap-2.5 cursor-pointer">
+            <span>⚡ DROP NEXT WORD</span>
+            <span class="hidden md:inline-block text-[10px] font-sans font-bold px-2 py-0.5 rounded bg-black/30 text-pink-100">SPACE</span>
+          </button>
+
+          <button id="micGrabbedBtn" onclick="toggleMicTimer()"
+            class="btn-grab w-full py-4 px-5 rounded-2xl font-display font-extrabold text-base sm:text-lg uppercase tracking-wider text-white flex items-center justify-center gap-2.5 cursor-pointer">
+            <span id="micGrabbedIcon">🎤</span>
+            <span id="micGrabbedText">MIC GRABBED! ANSWER</span>
+            <span class="hidden md:inline-block text-[10px] font-sans font-bold px-2 py-0.5 rounded bg-black/30 text-amber-100">ENTER</span>
+          </button>
+        </div>
+
+        <!-- ANSWER & REAL-SONG VERIFIER PANEL (Opens when Mic is Grabbed or toggled) -->
+        <div id="answerVerifierPanel" class="w-full mt-5 pt-5 border-t-2 border-hotpink-500/40 text-left z-10 hidden animate-pop-in">
+          <div class="bg-velvet-950/90 border border-hotpink-400/50 rounded-2xl p-4 sm:p-5 shadow-2xl space-y-4">
+            <!-- Header & Timer Pause/Resume Controls -->
+            <div class="flex flex-wrap items-center justify-between gap-2">
+              <div class="flex items-center gap-2">
+                <span class="px-2.5 py-0.5 rounded-full bg-amber-500/20 border border-amber-400/50 text-amber-200 text-[11px] font-black uppercase tracking-wider">
+                  🎤 Mic Claimed
+                </span>
+                <span id="answerTimerBadge" class="px-2.5 py-0.5 rounded-full bg-red-500/25 border border-red-400/60 text-red-200 text-[11px] font-black uppercase tracking-wider">
+                  ⏱️ 20.0s to Answer
+                </span>
+              </div>
+              <div class="flex items-center gap-2">
+                <button type="button" id="pauseResumeTimerBtn" onclick="toggleTimerPauseOnly()"
+                  class="px-2.5 py-1 rounded-lg bg-velvet-800 hover:bg-velvet-700 border border-pink-500/30 text-[11px] font-bold text-pink-200 transition">
+                  ⏸ Pause Timer
+                </button>
+                <button type="button" onclick="closeAnswerVerifier()"
+                  class="px-2.5 py-1 rounded-lg bg-velvet-800 hover:bg-red-500/30 border border-pink-500/25 text-[11px] font-bold text-pink-300 hover:text-white transition">
+                  ✕ Close
+                </button>
+              </div>
+            </div>
+
+            <!-- Step 1: Who Grabbed the Mic? -->
+            <div>
+              <div class="flex items-center justify-between mb-1.5">
+                <label class="text-[11px] font-extrabold uppercase tracking-wider text-hotpink-300">
+                  1. Who grabbed the mic?
+                </label>
+                <span id="selectedPlayerIndicator" class="text-[11px] font-bold text-pink-200/75">Select a player</span>
+              </div>
+              <div id="answerPlayerPills" class="flex flex-wrap gap-2">
+                <!-- Populated dynamically from state.players -->
+              </div>
+            </div>
+
+            <!-- Step 2: Song Search & Verification -->
+            <div>
+              <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+                <label for="songAnswerInput" class="text-[11px] font-extrabold uppercase tracking-wider text-hotpink-300">
+                  2. Type Lyric (+1), Song Title (+2), or Song &amp; Artist (+3):
+                </label>
+                <span class="text-[10px] font-bold text-pink-200/70">Auto-scored on Enter</span>
+              </div>
+
+              <form onsubmit="handleInstantEnterAnswer(event)" class="flex items-center gap-2">
+                <input id="songAnswerInput" type="text" autocomplete="off"
+                  placeholder="Type lyric, song title, or Song - Artist and press Enter..."
+                  class="flex-1 bg-velvet-900 border-2 border-pink-500/40 focus:border-hotpink-400 rounded-xl px-3.5 py-2.5 text-sm font-semibold text-white placeholder-pink-300/45 focus:outline-none" />
+                <button type="submit" id="submitAnswerBtn"
+                  class="btn-hotpink px-4 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold uppercase tracking-wider text-white shrink-0">
+                  Enter
+                </button>
+              </form>
+            </div>
+
+            <!-- Instant Lookup Status -->
+            <div id="songSearchStatus" class="text-xs font-semibold text-pink-200/80 hidden"></div>
+
+            <!-- Clickable Song Title Choices (when song title typed without artist) -->
+            <div id="songChoicesContainer" class="hidden space-y-2">
+              <div class="text-[11px] font-extrabold uppercase tracking-wider text-amber-300">
+                Which song did they mean? (+2 Song Only)
+              </div>
+              <div id="songChoicesList" class="flex flex-col gap-1.5 max-h-48 overflow-y-auto pr-1"></div>
+            </div>
+
+            <!-- Quick Bluff Penalty Footer -->
+            <div class="pt-2 border-t border-pink-500/20 flex flex-wrap items-center justify-between gap-2">
+              <button type="button" onclick="penalizeSelectedPlayerBluff()"
+                class="px-3.5 py-2 rounded-xl bg-red-500/20 hover:bg-red-500/40 border border-red-400/50 text-xs font-extrabold text-red-200 transition flex items-center gap-1.5">
+                <span>🚨</span>
+                <span>Bluff / Freeze / Wrong Song (-1 Pt)</span>
+              </button>
+
+              <span class="text-[11px] font-bold text-pink-300/75">
+                Lyric <strong class="text-emerald-300">+1</strong> • Song <strong class="text-hotpink-300">+2</strong> • Artist &amp; Song <strong class="text-amber-300">+3</strong>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RIGHT COLUMN: SCOREBOARD & RETIRED SONGS LOG (5 cols on desktop) -->
+    <aside class="lg:col-span-5 flex flex-col gap-5">
+
+      <!-- Scoreboard Card -->
+      <div class="glass-card rounded-3xl p-5 flex flex-col gap-4">
+        <div class="flex items-center justify-between gap-2">
+          <div>
+            <h3 class="font-display font-extrabold text-xl text-white flex items-center gap-2">
+              <span>🏆</span>
+              <span>Scoreboard (First to 50)</span>
+            </h3>
+            <p class="text-xs text-pink-200/70">+1 Lyric • +2 Song • +3 Artist &amp; Song • -1 Bluff</p>
+          </div>
+          <button onclick="resetAllScores()" title="Reset all scores to 0"
+            class="px-2.5 py-1.5 rounded-xl bg-velvet-800/90 hover:bg-red-500/25 border border-pink-500/25 hover:border-red-400/50 text-[11px] font-bold text-pink-200 hover:text-red-200 transition">
+            Reset Scores
+          </button>
+        </div>
+
+        <!-- Add Player / Team Form -->
+        <form onsubmit="addPlayer(event)" class="flex items-center gap-2">
+          <input id="playerNameInput" type="text" maxlength="20" placeholder="Add player or team name..."
+            class="flex-1 bg-velvet-950/85 border border-pink-500/30 focus:border-hotpink-500 rounded-xl px-3.5 py-2.5 text-sm text-white placeholder-pink-300/40 focus:outline-none" />
+          <button type="submit"
+            class="btn-hotpink px-4 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold uppercase tracking-wider text-white shrink-0">
+            + Add
+          </button>
+        </form>
+
+        <!-- Player List -->
+        <div id="playersList" class="flex flex-col gap-2.5 max-h-[340px] overflow-y-auto pr-1">
+          <!-- Populated dynamically via JS -->
+        </div>
+      </div>
+
+      <!-- Retired Songs (No Repeats Log) Card -->
+      <div class="glass-card rounded-3xl p-5 flex flex-col gap-3.5">
+        <div class="flex items-center justify-between">
+          <div>
+            <h3 class="font-display font-extrabold text-lg text-white flex items-center gap-2">
+              <span>🚫</span>
+              <span>Retired Songs</span>
+              <span id="retiredCountBadge" class="px-2 py-0.5 text-xs font-sans font-extrabold rounded-full bg-hotpink-500/25 text-hotpink-300 border border-hotpink-500/35">0</span>
+            </h3>
+            <p class="text-xs text-pink-200/70">Songs already sung tonight (no repeats!)</p>
+          </div>
+          <button onclick="clearRetiredSongs()" class="text-[11px] font-bold text-pink-300/70 hover:text-white underline">
+            Clear
+          </button>
+        </div>
+
+        <form onsubmit="addRetiredSong(event)" class="flex items-center gap-2">
+          <input id="retiredSongInput" type="text" maxlength="45" placeholder="Log sung song (e.g., Toxic - Britney)..."
+            class="flex-1 bg-velvet-950/85 border border-pink-500/30 focus:border-hotpink-500 rounded-xl px-3 py-2 text-xs sm:text-sm text-white placeholder-pink-300/40 focus:outline-none" />
+          <button type="submit"
+            class="px-3.5 py-2 rounded-xl bg-velvet-800 hover:bg-hotpink-500/30 border border-pink-500/35 text-xs font-extrabold text-pink-100 transition shrink-0">
+            Retire
+          </button>
+        </form>
+
+        <div id="retiredSongsList" class="flex flex-wrap gap-1.5 max-h-[150px] overflow-y-auto">
+          <span class="text-xs text-pink-300/50 italic">No songs retired yet—first hit goes here!</span>
+        </div>
+      </div>
+
+    </aside>
+  </main>
+
+  <!-- GAME HISTORY MODAL -->
+  <div id="historyModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/80 backdrop-blur-md">
+    <div class="glass-card border-2 border-hotpink-500/60 rounded-3xl max-w-2xl w-full max-h-[88vh] overflow-y-auto p-6 sm:p-8 relative shadow-2xl">
+      <div class="flex items-start justify-between gap-4 border-b border-pink-500/25 pb-4">
+        <div>
+          <span class="px-2.5 py-0.5 rounded-full text-[10px] font-extrabold uppercase tracking-widest bg-hotpink-500/25 text-hotpink-300 border border-hotpink-500/40">
+            Completed Matches
+          </span>
+          <h2 class="font-display font-extrabold text-2xl sm:text-3xl text-white mt-1 flex items-center gap-2">
+            <span>🕒</span>
+            <span>Game History</span>
+            <span id="historyModalCountBadge" class="px-2.5 py-0.5 text-xs font-sans font-extrabold rounded-full bg-hotpink-500/25 text-hotpink-300 border border-hotpink-500/35">0</span>
+          </h2>
+        </div>
+        <div class="flex items-center gap-2">
+          <button type="button" onclick="clearGameHistory()"
+            class="px-3 py-2 rounded-xl bg-red-500/20 hover:bg-red-500/35 border border-red-400/50 text-xs font-extrabold text-red-200 transition cursor-pointer">
+            🗑️ Clear History
+          </button>
+          <button onclick="closeHistoryModal()" class="w-9 h-9 rounded-xl bg-velvet-800 hover:bg-hotpink-500 text-white font-bold flex items-center justify-center transition">
+            ✕
+          </button>
+        </div>
+      </div>
+
+      <div id="gameHistoryList" class="mt-5 space-y-2.5 max-h-[55vh] overflow-y-auto pr-1">
+        <!-- Populated dynamically -->
+      </div>
+
+      <div class="mt-6 flex justify-end">
+        <button onclick="closeHistoryModal()" class="btn-hotpink px-6 py-3 rounded-2xl font-display font-extrabold text-sm uppercase tracking-wider text-white">
+          Done
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- HOW TO PLAY & TABLE RULES MODAL -->
+  <div id="rulesModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/80 backdrop-blur-md">
+    <div class="glass-card border-2 border-hotpink-500/60 rounded-3xl max-w-2xl w-full max-h-[88vh] overflow-y-auto p-6 sm:p-8 relative shadow-2xl">
+      <div class="flex items-start justify-between gap-4 border-b border-pink-500/25 pb-4">
+        <div>
+          <span class="px-2.5 py-0.5 rounded-full text-[10px] font-extrabold uppercase tracking-widest bg-hotpink-500/25 text-hotpink-300 border border-hotpink-500/40">
+            Official Party Guide
+          </span>
+          <h2 class="font-display font-extrabold text-2xl sm:text-3xl text-white mt-1">
+            How to Play Grab The Mic 🎤
+          </h2>
+        </div>
+        <button onclick="closeRulesModal()" class="w-9 h-9 rounded-xl bg-velvet-800 hover:bg-hotpink-500 text-white font-bold flex items-center justify-center transition">
+          ✕
+        </button>
+      </div>
+
+      <div class="mt-5 space-y-4 text-sm text-pink-100/90 leading-relaxed">
+        <div class="p-4 rounded-2xl bg-velvet-900/80 border border-pink-500/25">
+          <h4 class="font-extrabold text-hotpink-400 uppercase tracking-wider text-xs mb-1">1. The Table Mic Setup &amp; 50-Point Race</h4>
+          <p>Place <strong>one real microphone</strong> in the exact center of the table. First team to reach <strong>50 points</strong> (or the team with the highest score when <strong>End Game</strong> is clicked) wins!</p>
+        </div>
+
+        <div class="p-4 rounded-2xl bg-velvet-900/80 border border-pink-500/25">
+          <h4 class="font-extrabold text-amber-400 uppercase tracking-wider text-xs mb-1">2. The Scramble &amp; Sing Timer</h4>
+          <p>The instant a word appears, sprint/reach for the mic. The host taps <strong>MIC GRABBED!</strong> (or hits <kbd class="px-1.5 py-0.5 bg-velvet-800 rounded text-xs">Enter</kbd>). The mic holder must start <strong>singing</strong> a real song containing that word in the <strong>title or lyrics</strong> before the timer buzzes.</p>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+          <div class="p-3 rounded-2xl bg-emerald-500/10 border border-emerald-400/30">
+            <div class="font-black text-emerald-300 text-base">+1 PT</div>
+            <div class="font-bold text-white text-xs mt-0.5">Lyric Only</div>
+            <p class="text-[11px] text-pink-200/75 mt-1">Typed/sung lyric contains the prompt word.</p>
+          </div>
+          <div class="p-3 rounded-2xl bg-hotpink-500/15 border border-hotpink-400/40">
+            <div class="font-black text-hotpink-300 text-base">+2 PTS</div>
+            <div class="font-bold text-white text-xs mt-0.5">Song Only</div>
+            <p class="text-[11px] text-pink-200/75 mt-1">Real song whose title or lyrics contain the word.</p>
+          </div>
+          <div class="p-3 rounded-2xl bg-amber-500/15 border border-amber-400/40">
+            <div class="font-black text-amber-300 text-base">+3 PTS</div>
+            <div class="font-bold text-white text-xs mt-0.5">Artist &amp; Song</div>
+            <p class="text-[11px] text-pink-200/75 mt-1">Named BOTH the artist and the song title!</p>
+          </div>
+          <div class="p-3 rounded-2xl bg-red-500/15 border border-red-400/35">
+            <div class="font-black text-red-300 text-base">-1 PT</div>
+            <div class="font-bold text-white text-xs mt-0.5">Freeze / Bluff</div>
+            <p class="text-[11px] text-pink-200/75 mt-1">Froze, repeated a song, or faked the lyric.</p>
+          </div>
+        </div>
+
+        <div class="p-4 rounded-2xl bg-velvet-900/80 border border-pink-500/25">
+          <h4 class="font-extrabold text-fuchsia-400 uppercase tracking-wider text-xs mb-1">3. Chaos Twists &amp; Host Challenge</h4>
+          <ul class="list-disc list-inside space-y-1 text-xs sm:text-sm text-pink-100/85">
+            <li><strong>⚡ Lightning Round:</strong> Timer drops to 4 seconds—pure reflex!</li>
+            <li><strong>🔄 Pass-The-Mic Chain:</strong> After singing, gently pass the mic to another player who must sing a <em>different</em> song with the same word!</li>
+            <li><strong>🕵️ Host Challenge:</strong> Anyone can shout <em>"Check!"</em> if they think the word isn't really in the song. Wrong singer loses 1 pt; wrong challenger loses 1 pt.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="mt-6 flex justify-end">
+        <button onclick="closeRulesModal()" class="btn-hotpink px-6 py-3 rounded-2xl font-display font-extrabold text-sm uppercase tracking-wider text-white">
+          Let's Party! 🎤
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- WRONG ANSWER SPLASH OVERLAY -->
+  <div id="wrongAnswerModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/85 backdrop-blur-md">
+    <div class="neon-stage-urgent bg-velvet-950/95 border-4 border-red-500 rounded-3xl max-w-xl w-full p-8 sm:p-10 text-center shadow-2xl animate-shake space-y-4">
+      <div class="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-red-500/25 border border-red-400/70 text-red-200 text-xs sm:text-sm font-black uppercase tracking-[0.22em]">
+        <span>🚨</span>
+        <span>PENALTY • -1 POINT</span>
+      </div>
+      <div class="text-6xl sm:text-7xl">❌</div>
+      <h2 class="font-display font-extrabold text-4xl sm:text-6xl uppercase text-red-400 tracking-tight">
+        WRONG ANSWER!
+      </h2>
+      <p id="wrongAnswerReasonText" class="text-sm sm:text-base font-bold text-pink-100/90">
+        No matching lyric or song found for the prompt word!
+      </p>
+      <div class="pt-2">
+        <span class="inline-block px-3.5 py-1.5 rounded-xl bg-red-500/20 border border-red-400/40 text-xs font-extrabold text-red-200">
+          Dropping next word in a moment...
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- GRAND WINNER CELEBRATION SCREEN MODAL -->
+  <div id="winnerModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/90 backdrop-blur-lg">
+    <div class="neon-stage border-2 border-amber-400/80 rounded-3xl max-w-3xl w-full p-8 sm:p-12 text-center relative shadow-2xl animate-pop-in space-y-6">
+      <div class="inline-flex items-center gap-2 px-5 py-1.5 rounded-full bg-amber-500/25 border border-amber-300/70 text-amber-200 text-sm sm:text-base font-black uppercase tracking-[0.28em]">
+        <span>👑</span>
+        <span>WINNER</span>
+        <span>👑</span>
+      </div>
+
+      <div class="py-2">
+        <h2 id="winnerTeamNameDisplay" class="font-display font-extrabold text-5xl sm:text-7xl md:text-8xl uppercase text-white neon-text-pink break-words leading-tight">
+          TEAM NAME
+        </h2>
+        <p id="winnerScoreSummary" class="mt-3 text-lg sm:text-2xl font-extrabold text-amber-300">
+          50 POINTS!
+        </p>
+      </div>
+
+      <div id="winnerStandingsList" class="max-w-md mx-auto bg-velvet-950/85 border border-pink-500/30 rounded-2xl p-4 space-y-2 text-left">
+        <!-- Final standings populated dynamically -->
+      </div>
+
+      <div class="pt-2 flex flex-wrap items-center justify-center gap-3">
+        <button type="button" onclick="playAgainFromWinner()"
+          class="btn-hotpink px-7 py-4 rounded-2xl font-display font-extrabold text-base sm:text-lg uppercase tracking-wider text-white cursor-pointer">
+          🔄 Play Again (Reset Scores)
+        </button>
+        <button type="button" onclick="closeWinnerModal()"
+          class="px-5 py-4 rounded-2xl bg-velvet-800 hover:bg-velvet-700 border border-pink-500/35 text-xs sm:text-sm font-extrabold uppercase tracking-wider text-pink-100 cursor-pointer">
+          Back to Game
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- GAME LOGIC & WEB AUDIO SYNTHESIZER -->
+  <script>
+    // ==========================================
+    // 1. CURATED KARAOKE PROMPT WORD BANK (EASY, MEDIUM & HARD)
+    // ==========================================
+    const WORD_CATEGORIES = {
+      EASY: {
+        label: "💖 Easy • Cute & Common",
+        words: [
+          "LOVE", "CUTE", "SWEET", "BABY", "HUG", "KISS", "SMILE", "HAPPY", "HEART", "PRETTY",
+          "DARLING", "HONEY", "SUGAR", "CANDY", "ANGEL", "STAR", "SUN", "MOON", "CLOUD", "RAINBOW",
+          "FLOWER", "ROSE", "DAISY", "CHERRY", "PEACH", "BERRY", "CUPCAKE", "COOKIE", "PUPPY", "KITTY",
+          "BUNNY", "TEDDY", "SPARKLE", "SHINE", "GLOW", "DREAM", "WISH", "MAGIC", "LUCKY", "CHARM",
+          "FRIEND", "BESTIE", "TOGETHER", "FOREVER", "ALWAYS", "PROMISE", "HAND", "HOLD", "WARM", "COZY",
+          "SOFT", "PINK", "RED", "BLUE", "GOLD", "WHITE", "YELLOW", "LIGHT", "BRIGHT", "SUNSHINE",
+          "MORNING", "NIGHT", "TONIGHT", "TODAY", "DAY", "SUMMER", "SPRING", "HELLO", "HEY", "YES",
+          "PLEASE", "THANK", "YOU", "ME", "WE", "US", "GIRL", "BOY", "KIDS", "YOUNG",
+          "DANCE", "SING", "SONG", "MUSIC", "PLAY", "FUN", "JOY", "LAUGH", "GIGGLE", "CHEER",
+          "PARTY", "GIFT", "CAKE", "BALLOON", "RIBBON", "BOW", "CROWN", "PRINCESS", "PRINCE", "QUEEN",
+          "KING", "HOME", "HOUSE", "DOOR", "WINDOW", "BED", "PILLOW", "SLEEP", "WAKE", "EYES",
+          "FACE", "LIPS", "CHEEK", "HAIR", "DRESS", "SHOES", "HAT", "WALK", "RUN", "JUMP",
+          "FLY", "SKY", "BIRD", "BUTTERFLY", "BEE", "SEA", "BEACH", "WAVE", "WATER", "RAIN",
+          "SNOW", "TREE", "LEAF", "APPLE", "LEMON", "MILK", "TEA", "COFFEE", "TIME", "NOW",
+          "NEW", "GOOD", "GREAT", "BEST", "NICE", "KIND", "TRUE", "REAL", "ONE", "TWO"
+        ]
+      },
+      MEDIUM: {
+        label: "✨ Medium • Pop & Lyric Hooks",
+        words: [
+          "FIRE", "CRAZY", "WILD", "FREE", "ALONE", "LONELY", "MISS", "MISSING", "CRY", "TEARS",
+          "HURT", "PAIN", "BREAK", "BROKEN", "FALL", "FALLING", "STAY", "LEAVE", "GONE", "BACK",
+          "WAIT", "CALL", "PHONE", "RING", "LETTER", "PICTURE", "PHOTOGRAPH", "MEMORY", "SECRET", "WHISPER",
+          "VOICE", "SOUND", "QUIET", "SILENCE", "ECHO", "SHADOW", "MIRROR", "GLASS", "WINDOW", "WALL",
+          "STREET", "ROAD", "HIGHWAY", "DRIVE", "CAR", "RIDE", "TRAIN", "TICKET", "CITY", "TOWN",
+          "CLUB", "DISCO", "BEAT", "RHYTHM", "RADIO", "GUITAR", "PIANO", "DRUMS", "STAGE", "SPOTLIGHT",
+          "MOVIE", "CAMERA", "FASHION", "LIPSTICK", "PERFUME", "JEANS", "JACKET", "BOOTS", "SUNGLASSES", "DIAMONDS",
+          "SILVER", "PEARL", "CRYSTAL", "VELVET", "SILK", "SATIN", "GOLD", "MONEY", "DOLLAR", "MILLION",
+          "LUCK", "CHANCE", "GAME", "PLAYING", "WIN", "LOSE", "FIGHT", "BRAVE", "STRONG", "POWER",
+          "HERO", "SUPER", "DANGER", "TROUBLE", "FEVER", "BURN", "BURNING", "FLAME", "SMOKE", "ASHES",
+          "STORM", "THUNDER", "LIGHTNING", "WIND", "OCEAN", "RIVER", "ISLAND", "PARADISE", "GARDEN", "FOREST",
+          "MOUNTAIN", "DESERT", "VALLEY", "WINTER", "AUTUMN", "SEASON", "MIDNIGHT", "YESTERDAY", "TOMORROW", "CLOCK",
+          "HOUR", "MINUTE", "SECOND", "WORLD", "EARTH", "SPACE", "PLANET", "ROCKET", "VENUS", "MARS",
+          "HEAVEN", "HELL", "DEVIL", "GHOST", "MONSTER", "MAGICIAN", "CIRCUS", "CARNIVAL", "HOLIDAY", "VACATION",
+          "WINE", "BEER", "WHISKEY", "TEQUILA", "DRINK", "CHEERS", "FRIDAY", "WEEKEND", "STRANGER", "ENEMY"
+        ]
+      },
+      HARD: {
+        label: "🔥 Hard • Deep Cuts & Challenges",
+        words: [
+          "CHAMPAGNE", "SILHOUETTE", "GRAVITY", "ELECTRIC", "POISON", "TELEPHONE", "PLASTIC", "COWBOY", "ZOMBIE", "UMBRELLA",
+          "TOKYO", "CALIFORNIA", "HOLLYWOOD", "VEGAS", "LONDON", "PARIS", "MIAMI", "HAVANA", "JAMAICA", "MEXICO",
+          "TEXAS", "GEORGIA", "ALABAMA", "TENNESSEE", "AFRICA", "AMERICA", "CADILLAC", "FERRARI", "LAMBORGHINI", "MERCEDES",
+          "CHEVY", "MOTORCYCLE", "HELICOPTER", "SUBWAY", "AIRPLANE", "BICYCLE", "CAPTAIN", "SAILOR", "PIRATE", "TREASURE",
+          "CASINO", "POKER", "DICE", "JACKPOT", "BILLION", "SYMPHONY", "ORCHESTRA", "CONCERT", "TRUMPET", "VIOLIN",
+          "ASTRONAUT", "SATELLITE", "GALAXY", "UNICORN", "DRAGON", "VAMPIRE", "WEREWOLF", "WITCH", "SKELETON", "GRAVEYARD",
+          "HALLOWEEN", "CHRISTMAS", "BIRTHDAY", "WEDDING", "CHURCH", "GRADUATION", "HOMEWORK", "TEACHER", "DOCTOR", "MEDICINE",
+          "PILL", "FEVER", "SHIVER", "FREEZE", "FROZEN", "BULLET", "TRIGGER", "SOLDIER", "ARMY", "BATTLE",
+          "SURRENDER", "ESCAPE", "CHASING", "PRISON", "CAGE", "CHAINS", "CONTROL", "JEALOUS", "ENVY", "SHAME",
+          "PRIDE", "FAITH", "PRAYER", "TRUTH", "LIAR", "SCARS", "BREATHE", "BLOOD", "BONES", "THORN",
+          "SANDCASTLE", "WATERMELON", "STRAWBERRY", "COCONUT", "BANANA", "HONEYBEE", "SPIDER", "SNAKE", "WOLF", "LION",
+          "EAGLE", "SHARK", "WHALE", "MONKEY", "TIGER", "ALIEN", "LASER", "ROBOT", "MACHINE", "COMPUTER",
+          "CINEMA", "TELEVISION", "NEWSPAPER", "MAGAZINE", "CASTLE", "PALACE", "TOWER", "VILLAGE", "BRIDGE", "CEILING",
+          "ROOF", "CORNER", "CIRCLE", "CENTURY", "TATTOO", "PIERCING", "BIKINI", "SWEATER", "CLOWN", "ZOMBIES"
+        ]
+      }
+    };
+
+    const WORD_BANK = Object.entries(WORD_CATEGORIES).flatMap(([diff, group]) =>
+      group.words.map((word) => ({
+        word: word.trim().toUpperCase(),
+        difficulty: diff,
+        category: group.label
+      }))
+    );
+
+    const CHAOS_MODIFIERS = [
+      { id: 'STANDARD', icon: '🎤', text: 'STANDARD MIC SCRAMBLE', durationOverride: null, bgClass: 'bg-pink-500/20 border-pink-400/40 text-pink-100' },
+      { id: 'LIGHTNING', icon: '⚡', text: 'LIGHTNING SPRINT • 4 SECONDS!', durationOverride: 4, bgClass: 'bg-amber-500/25 border-amber-400/60 text-amber-100' },
+      { id: 'CHAIN', icon: '🔄', text: 'PASS-THE-MIC CHAIN!', durationOverride: null, bgClass: 'bg-fuchsia-500/25 border-fuchsia-400/60 text-fuchsia-100' },
+      { id: 'CHORUS', icon: '🎶', text: 'BELT THE CHORUS!', durationOverride: null, bgClass: 'bg-rose-500/25 border-rose-400/60 text-rose-100' }
+    ];
+
+    const WINNING_SCORE = 50;
+    const ANSWER_TIMER_SECONDS = 20;
+    const STORAGE_USED_WORDS_KEY = 'grabTheMic_usedWords_v2';
+    const STORAGE_GAME_HISTORY_KEY = 'grabTheMic_gameHistory_v1';
+
+    // ==========================================
+    // 2. APPLICATION STATE
+    // ==========================================
+    const state = {
+      difficulty: 'ALL',
+      baseDuration: 8,
+      activeDuration: 8,
+      remainingSeconds: 8,
+      timerMode: 'IDLE', // 'IDLE' | 'GRAB' | 'ANSWER'
+      timerRunning: false,
+      timerInterval: null,
+      roundNumber: 0,
+      deckNumber: 1,
+      wordQueue: [],
+      currentWordObj: null,
+      activeModifier: CHAOS_MODIFIERS[0],
+      soundEnabled: true,
+      audioCtx: null,
+      players: [
+        { id: 'p1', name: 'Team Pink', score: 0 },
+        { id: 'p2', name: 'Team Coral', score: 0 }
+      ],
+      selectedAnswerPlayerId: 'p1',
+      retiredSongs: [],
+      gameHistory: [],
+      currentGameRecorded: false,
+      bgAudio: null,
+      wrongOverlayTimeout: null
+    };
+
+    // ==========================================
+    // 3. WEB AUDIO SYNTHESIZER (PARTY SFX)
+    // ==========================================
+    function initAudio() {
+      if (!state.audioCtx) {
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        if (AudioContext) state.audioCtx = new AudioContext();
+      }
+      if (state.audioCtx && state.audioCtx.state === 'suspended') {
+        state.audioCtx.resume();
+      }
+    }
+
+    function playTone(freq, type, duration, vol = 0.16, delay = 0) {
+      if (!state.soundEnabled) return;
+      try {
+        initAudio();
+        if (!state.audioCtx) return;
+        const osc = state.audioCtx.createOscillator();
+        const gain = state.audioCtx.createGain();
+        osc.type = type;
+        osc.frequency.setValueAtTime(freq, state.audioCtx.currentTime + delay);
+        gain.gain.setValueAtTime(vol, state.audioCtx.currentTime + delay);
+        gain.gain.exponentialRampToValueAtTime(0.001, state.audioCtx.currentTime + delay + duration);
+        osc.connect(gain);
+        gain.connect(state.audioCtx.destination);
+        osc.start(state.audioCtx.currentTime + delay);
+        osc.stop(state.audioCtx.currentTime + delay + duration);
+      } catch (e) {
+        // Ignore audio autoplay blocks until user gesture
+      }
+    }
+
+    function sfxWordDrop() {
+      playTone(440, 'triangle', 0.12, 0.18, 0);
+      playTone(554.37, 'triangle', 0.12, 0.18, 0.08);
+      playTone(659.25, 'sine', 0.24, 0.22, 0.16);
+    }
+
+    function sfxTick(urgent = false) {
+      playTone(urgent ? 980 : 660, 'sine', 0.07, urgent ? 0.16 : 0.09, 0);
+    }
+
+    function sfxBuzzer() {
+      playTone(150, 'sawtooth', 0.45, 0.24, 0);
+      playTone(115, 'sawtooth', 0.55, 0.24, 0.12);
+    }
+
+    function sfxPointScored() {
+      playTone(523.25, 'triangle', 0.12, 0.18, 0);
+      playTone(659.25, 'triangle', 0.12, 0.18, 0.09);
+      playTone(783.99, 'triangle', 0.15, 0.2, 0.18);
+      playTone(1046.5, 'sine', 0.35, 0.22, 0.27);
+    }
+
+    function sfxPenalty() {
+      playTone(233.08, 'sawtooth', 0.18, 0.18, 0);
+      playTone(185.0, 'sawtooth', 0.35, 0.2, 0.15);
+    }
+
+    function toggleAudio() {
+      state.soundEnabled = !state.soundEnabled;
+      document.getElementById('soundIcon').textContent = state.soundEnabled ? '🔊' : '🔇';
+      document.getElementById('soundLabel').textContent = state.soundEnabled ? 'SFX ON' : 'SFX OFF';
+      if (state.soundEnabled) sfxTick(false);
+    }
+
+    // ==========================================
+    // 4. DECK SHUFFLING & CROSS-GAME PERSISTENCE
+    // ==========================================
+    function getPreviouslyUsedWords() {
+      try {
+        const raw = localStorage.getItem(STORAGE_USED_WORDS_KEY);
+        return raw ? new Set(JSON.parse(raw)) : new Set();
+      } catch (e) {
+        return new Set();
+      }
+    }
+
+    function markWordAsUsed(word) {
+      try {
+        const used = getPreviouslyUsedWords();
+        used.add(word.toUpperCase());
+        localStorage.setItem(STORAGE_USED_WORDS_KEY, JSON.stringify([...used]));
+      } catch (e) {
+        // Ignore storage quota issues
+      }
+    }
+
+    function shuffleArray(arr) {
+      const copy = [...arr];
+      for (let i = copy.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [copy[i], copy[j]] = [copy[j], copy[i]];
+      }
+      return copy;
+    }
+
+    function getFilteredPool(diff = state.difficulty) {
+      return diff === 'ALL'
+        ? [...WORD_BANK]
+        : WORD_BANK.filter((item) => item.difficulty === diff);
+    }
+
+    function buildFreshGameWordQueue(isNewDeckCycle = false) {
+      const pool = getFilteredPool(state.difficulty);
+      const usedSet = getPreviouslyUsedWords();
+      let unseen = pool.filter((item) => !usedSet.has(item.word));
+
+      if (unseen.length === 0 || isNewDeckCycle) {
+        try {
+          const remainingOtherDiffs = [...usedSet].filter(
+            (w) => !pool.some((p) => p.word === w)
+          );
+          localStorage.setItem(STORAGE_USED_WORDS_KEY, JSON.stringify(remainingOtherDiffs));
+        } catch (e) {}
+        unseen = [...pool];
+      }
+
+      state.wordQueue = shuffleArray(unseen);
+      updateDeckCounterUI();
+    }
+
+    function updateDeckCounterUI() {
+      const deckNumEl = document.getElementById('deckNumberDisplay');
+      const remEl = document.getElementById('deckRemainingCount');
+      const setupCountEl = document.getElementById('setupDeckCountLabel');
+      if (deckNumEl) deckNumEl.textContent = state.deckNumber;
+      if (remEl) remEl.textContent = state.wordQueue.length;
+      if (setupCountEl) {
+        const poolLen = getFilteredPool(state.difficulty).length;
+        setupCountEl.textContent = `${poolLen} words in deck`;
+      }
+    }
+
+    // ==========================================
+    // 5. SETUP LOBBY & NAVIGATION
+    // ==========================================
+    function selectSetupVibe(diff) {
+      state.difficulty = diff;
+      document.querySelectorAll('.setup-vibe-card').forEach((card) => {
+        const isSelected = card.getAttribute('data-setup-vibe') === diff;
+        if (isSelected) {
+          card.className =
+            'setup-vibe-card p-4 rounded-2xl border-2 border-hotpink-400 bg-hotpink-500/25 text-left transition cursor-pointer shadow-lg shadow-hotpink-500/20';
+        } else {
+          card.className =
+            'setup-vibe-card p-4 rounded-2xl border border-pink-500/30 bg-velvet-900/80 hover:bg-velvet-800 text-left transition cursor-pointer';
+        }
+      });
+      syncDifficultyButtonsUI();
+      updateDeckCounterUI();
+    }
+
+    function syncSetupTimer() {
+      const input = document.getElementById('setupTimerInput');
+      let val = parseInt(input.value, 10);
+      if (isNaN(val) || val < 3) val = 3;
+      if (val > 120) val = 120;
+      state.baseDuration = val;
+      const inGameInput = document.getElementById('timerDurationInput');
+      if (inGameInput) inGameInput.value = val;
+    }
+
+    function setQuickSetupTimer(sec) {
+      const input = document.getElementById('setupTimerInput');
+      if (input) input.value = sec;
+      syncSetupTimer();
+    }
+
+    function syncSetupChaos() {
+      const setupToggle = document.getElementById('setupChaosToggle');
+      const gameToggle = document.getElementById('chaosTwistsToggle');
+      if (setupToggle && gameToggle) {
+        gameToggle.checked = setupToggle.checked;
+      }
+    }
+
+    function addSetupPlayer(e) {
+      e.preventDefault();
+      const input = document.getElementById('setupPlayerInput');
+      const name = input.value.trim();
+      if (!name) return;
+      const newPlayer = {
+        id: 'p_' + Date.now() + '_' + Math.random().toString(36).slice(2, 6),
+        name,
+        score: 0
+      };
+      state.players.push(newPlayer);
+      if (!state.selectedAnswerPlayerId) state.selectedAnswerPlayerId = newPlayer.id;
+      input.value = '';
+      renderSetupPlayers();
+      renderPlayers();
+    }
+
+    function removeSetupPlayer(id) {
+      if (state.players.length <= 1) {
+        showToast('Keep at least 1 player or team!', 'amber');
+        return;
+      }
+      state.players = state.players.filter((p) => p.id !== id);
+      if (state.selectedAnswerPlayerId === id) {
+        state.selectedAnswerPlayerId = state.players[0]?.id || null;
+      }
+      renderSetupPlayers();
+      renderPlayers();
+    }
+
+    function renderSetupPlayers() {
+      const container = document.getElementById('setupPlayersList');
+      if (!container) return;
+      container.innerHTML = state.players
+        .map(
+          (p) => `
+          <div class="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-velvet-900 border border-pink-500/40 text-xs sm:text-sm font-extrabold text-white">
+            <span>🎤 ${escapeHtml(p.name)}</span>
+            <button type="button" onclick="removeSetupPlayer('${p.id}')" class="text-pink-300/70 hover:text-red-400 font-black ml-1">✕</button>
+          </div>
+        `
+        )
+        .join('');
+    }
+
+    function startGameFromSetup() {
+      initAudio();
+      syncSetupTimer();
+      syncSetupChaos();
+      state.roundNumber = 0;
+      state.deckNumber = 1;
+      state.currentGameRecorded = false;
+      state.players.forEach((p) => (p.score = 0));
+      state.retiredSongs = [];
+      renderPlayers();
+      renderRetiredSongs();
+
+      buildFreshGameWordQueue(false);
+
+      document.getElementById('setupScreen').classList.add('hidden');
+      document.getElementById('gameScreen').classList.remove('hidden');
+      document.getElementById('endGameBtn').classList.remove('hidden');
+      document.getElementById('backToSetupBtn').classList.remove('hidden');
+
+      dropNextWord();
+    }
+
+    function returnToSetup() {
+      stopTimer();
+      stopBackgroundCelebration();
+      closeAnswerVerifier();
+      document.getElementById('gameScreen').classList.add('hidden');
+      document.getElementById('endGameBtn').classList.add('hidden');
+      document.getElementById('backToSetupBtn').classList.add('hidden');
+      document.getElementById('setupScreen').classList.remove('hidden');
+      renderSetupPlayers();
+    }
+
+    function startFreshNewGame() {
+      stopTimer();
+      stopBackgroundCelebration();
+      closeAnswerVerifier();
+      closeWinnerModal();
+      closeHistoryModal();
+      closeRulesModal();
+      const wrongModal = document.getElementById('wrongAnswerModal');
+      if (wrongModal) {
+        wrongModal.classList.add('hidden');
+        wrongModal.classList.remove('flex');
+      }
+      startGameFromSetup();
+      showToast('🎤 Started a fresh new game!', 'pink');
+    }
+
+    // ==========================================
+    // 6. DIFFICULTY & WORD DROP ENGINE
+    // ==========================================
+    function syncDifficultyButtonsUI() {
+      document.querySelectorAll('.diff-btn').forEach((btn) => {
+        const isSelected = btn.getAttribute('data-diff') === state.difficulty;
+        if (isSelected) {
+          btn.className =
+            'diff-btn px-3 py-1.5 rounded-xl text-xs font-extrabold bg-hotpink-500 text-white shadow-md shadow-hotpink-500/30 transition';
+        } else {
+          btn.className =
+            'diff-btn px-3 py-1.5 rounded-xl text-xs font-bold bg-velvet-800/80 text-pink-200 hover:bg-velvet-700 border border-pink-500/20 transition';
+        }
+      });
+    }
+
+    function setDifficulty(diff) {
+      state.difficulty = diff;
+      syncDifficultyButtonsUI();
+      buildFreshGameWordQueue(false);
+      showToast(`Mode switched to ${diff === 'ALL' ? 'All Mixed' : diff}!`, 'pink');
+    }
+
+    function updateBaseDuration() {
+      const input = document.getElementById('timerDurationInput');
+      let val = parseInt(input.value, 10);
+      if (isNaN(val) || val < 3) val = 3;
+      if (val > 120) val = 120;
+      input.value = val;
+      state.baseDuration = val;
+    }
+
+    function pickRoundModifier() {
+      const chaosEnabled = document.getElementById('chaosTwistsToggle')?.checked;
+      if (!chaosEnabled || state.roundNumber <= 1 || Math.random() > 0.35) {
+        return CHAOS_MODIFIERS[0];
+      }
+      const twists = CHAOS_MODIFIERS.slice(1);
+      return twists[Math.floor(Math.random() * twists.length)];
+    }
+
+    function dropNextWord() {
+      stopTimer();
+      stopBackgroundCelebration();
+      closeAnswerVerifier();
+
+      if (state.wordQueue.length === 0) {
+        state.deckNumber += 1;
+        buildFreshGameWordQueue(true);
+        showToast(`🃏 Deck finished! Fresh Deck #${state.deckNumber} shuffled!`, 'amber');
+      }
+
+      const nextObj = state.wordQueue.pop();
+      state.currentWordObj = nextObj;
+      state.roundNumber += 1;
+      markWordAsUsed(nextObj.word);
+      updateDeckCounterUI();
+
+      // Modifier & Duration
+      state.activeModifier = pickRoundModifier();
+      const roundDuration = state.activeModifier.durationOverride || state.baseDuration;
+
+      // Update UI
+      document.getElementById('roundBadge').textContent = `ROUND #${state.roundNumber} • GRAB THE MIC`;
+      document.getElementById('wordCategoryPill').textContent = nextObj.category;
+
+      const modBanner = document.getElementById('modifierBanner');
+      modBanner.className = `px-4 py-1.5 rounded-full border text-xs sm:text-sm font-black tracking-wider uppercase flex items-center gap-2 shadow-sm ${state.activeModifier.bgClass}`;
+      modBanner.innerHTML = `<span>${state.activeModifier.icon}</span><span id="modifierText">${state.activeModifier.text}</span>`;
+
+      const wordEl = document.getElementById('promptWordDisplay');
+      wordEl.classList.remove('animate-pop-in');
+      void wordEl.offsetWidth;
+      wordEl.textContent = nextObj.word;
+      wordEl.classList.add('animate-pop-in');
+
+      document.getElementById('stageCalloutTitle').textContent = 'GRAB THE MIC!';
+      document.getElementById('stageCalloutSub').innerHTML =
+        `Sprint for the mic &amp; sing a song with <strong class="text-hotpink-300">"${nextObj.word}"</strong>!`;
+
+      sfxWordDrop();
+      startTimer(roundDuration, 'GRAB');
+    }
+
+    function dropCustomWord(e) {
+      e.preventDefault();
+      const input = document.getElementById('customWordInput');
+      if (!input) return;
+
+      const cleanedWord = input.value
+        .trim()
+        .replace(/[^a-zA-Z0-9'-]/g, '')
+        .toUpperCase();
+
+      if (!cleanedWord) {
+        showToast('Enter a valid single word first!', 'amber');
+        return;
+      }
+
+      input.value = '';
+      stopTimer();
+      stopBackgroundCelebration();
+      closeAnswerVerifier();
+
+      const customObj = {
+        word: cleanedWord,
+        difficulty: 'CUSTOM',
+        category: '✍️ Custom Host Word'
+      };
+
+      state.currentWordObj = customObj;
+      state.roundNumber += 1;
+
+      state.activeModifier = pickRoundModifier();
+      const roundDuration = state.activeModifier.durationOverride || state.baseDuration;
+
+      document.getElementById('roundBadge').textContent = `ROUND #${state.roundNumber} • GRAB THE MIC`;
+      document.getElementById('wordCategoryPill').textContent = customObj.category;
+
+      const modBanner = document.getElementById('modifierBanner');
+      modBanner.className = `px-4 py-1.5 rounded-full border text-xs sm:text-sm font-black tracking-wider uppercase flex items-center gap-2 shadow-sm ${state.activeModifier.bgClass}`;
+      modBanner.innerHTML = `<span>${state.activeModifier.icon}</span><span id="modifierText">${state.activeModifier.text}</span>`;
+
+      const wordEl = document.getElementById('promptWordDisplay');
+      wordEl.classList.remove('animate-pop-in');
+      void wordEl.offsetWidth;
+      wordEl.textContent = customObj.word;
+      wordEl.classList.add('animate-pop-in');
+
+      document.getElementById('stageCalloutTitle').textContent = 'GRAB THE MIC!';
+      document.getElementById('stageCalloutSub').innerHTML =
+        `Sprint for the mic &amp; sing a song with <strong class="text-hotpink-300">"${customObj.word}"</strong>!`;
+
+      sfxWordDrop();
+      startTimer(roundDuration, 'GRAB');
+    }
+
+    // ==========================================
+    // 7. DUAL-PHASE COUNTDOWN TIMER (GRAB vs ANSWER)
+    // ==========================================
+    function startTimer(seconds, mode = 'GRAB') {
+      stopTimer();
+      state.timerMode = mode;
+      state.activeDuration = seconds;
+      state.remainingSeconds = seconds;
+      state.timerRunning = true;
+
+      const stageCard = document.getElementById('promptStageCard');
+      stageCard.classList.remove('neon-stage-urgent');
+      updateTimerRingUI();
+
+      let lastWholeSecond = Math.ceil(state.remainingSeconds);
+
+      state.timerInterval = setInterval(() => {
+        if (!state.timerRunning) return;
+        state.remainingSeconds = Math.max(0, state.remainingSeconds - 0.1);
+        updateTimerRingUI();
+
+        const currentWhole = Math.ceil(state.remainingSeconds);
+        if (currentWhole < lastWholeSecond && currentWhole > 0) {
+          lastWholeSecond = currentWhole;
+          if (currentWhole <= 3) {
+            stageCard.classList.add('neon-stage-urgent');
+            sfxTick(true);
+          } else {
+            sfxTick(false);
+          }
+        }
+
+        if (state.remainingSeconds <= 0) {
+          stopTimer();
+          handleTimeExpired();
+        }
+      }, 100);
+    }
+
+    function stopTimer() {
+      state.timerRunning = false;
+      if (state.timerInterval) {
+        clearInterval(state.timerInterval);
+        state.timerInterval = null;
+      }
+      document.getElementById('promptStageCard')?.classList.remove('neon-stage-urgent');
+    }
+
+    function stopActiveTimerFromStage() {
+      stopTimer();
+      state.timerMode = 'IDLE';
+      const pauseBtn = document.getElementById('pauseResumeTimerBtn');
+      if (pauseBtn) pauseBtn.textContent = '▶ Resume Timer';
+      document.getElementById('stageCalloutTitle').textContent = 'Timer Stopped';
+      document.getElementById('stageCalloutSub').textContent =
+        'Hit MIC GRABBED! to answer or DROP NEXT WORD for the next prompt.';
+      showToast('⏹ Timer stopped!', 'amber');
+    }
+
+    function updateTimerRingUI() {
+      const circumference = 263.89;
+      const ratio = state.activeDuration > 0 ? state.remainingSeconds / state.activeDuration : 0;
+      const offset = circumference * (1 - Math.max(0, Math.min(1, ratio)));
+
+      const ring = document.getElementById('timerRingCircle');
+      const secText = document.getElementById('timerSecondsDisplay');
+      const answerBadge = document.getElementById('answerTimerBadge');
+
+      if (ring) {
+        ring.style.strokeDashoffset = offset.toFixed(2);
+        ring.style.stroke = state.remainingSeconds <= 3 ? '#ff4238' : '#ff1e8e';
+      }
+      if (secText) {
+        secText.textContent = state.remainingSeconds.toFixed(1);
+      }
+      if (answerBadge && state.timerMode === 'ANSWER') {
+        answerBadge.textContent = `⏱️ ${state.remainingSeconds.toFixed(1)}s to Answer`;
+      }
+      syncStageTimerButtonUI();
+    }
+
+    function syncStageTimerButtonUI() {
+      const iconEl = document.getElementById('stopTimerBtnIcon');
+      const textEl = document.getElementById('stopTimerBtnText');
+      if (!iconEl || !textEl) return;
+
+      if (state.timerRunning) {
+        iconEl.textContent = '⏹';
+        textEl.textContent = 'Stop Timer';
+      } else {
+        iconEl.textContent = '▶';
+        textEl.textContent = 'Start Timer';
+      }
+    }
+
+    function toggleStageTimerStartStop() {
+      if (state.timerRunning) {
+        stopTimer();
+        const pauseBtn = document.getElementById('pauseResumeTimerBtn');
+        if (pauseBtn) pauseBtn.textContent = '▶ Resume Timer';
+        document.getElementById('stageCalloutTitle').textContent = 'Timer Stopped';
+        document.getElementById('stageCalloutSub').textContent =
+          'Click Start Timer to keep going or MIC GRABBED! to answer.';
+        syncStageTimerButtonUI();
+        showToast('⏹ Timer stopped!', 'amber');
+        return;
+      }
+
+      const modeToStart = state.timerMode === 'ANSWER' ? 'ANSWER' : 'GRAB';
+      const durationToStart =
+        state.remainingSeconds > 0
+          ? state.remainingSeconds
+          : modeToStart === 'ANSWER'
+            ? ANSWER_TIMER_SECONDS
+            : (state.activeModifier?.durationOverride || state.baseDuration);
+
+      if (modeToStart === 'GRAB' && state.remainingSeconds <= 0) {
+        state.activeDuration = durationToStart;
+      }
+
+      startTimer(durationToStart, modeToStart);
+      const pauseBtn = document.getElementById('pauseResumeTimerBtn');
+      if (pauseBtn) pauseBtn.textContent = '⏸ Pause Timer';
+      document.getElementById('stageCalloutTitle').textContent =
+        modeToStart === 'ANSWER' ? 'ANSWER TIMER RUNNING!' : 'GRAB THE MIC!';
+      syncStageTimerButtonUI();
+      showToast('▶ Timer started!', 'pink');
+    }
+
+    function handleTimeExpired() {
+      sfxBuzzer();
+      if (state.timerMode === 'ANSWER') {
+        const player = getSelectedPlayer();
+        if (player) {
+          updatePlayerScore(player.id, -1, false);
+        }
+        closeAnswerVerifier();
+        showWrongAnswerScreen(
+          `Time's up! ${player ? player.name : 'The singer'} took longer than 20 seconds (-1 pt).`
+        );
+      } else {
+        document.getElementById('stageCalloutTitle').textContent = "TIME'S UP! Nobody grabbed it!";
+        document.getElementById('stageCalloutSub').textContent =
+          'Hit DROP NEXT WORD to launch the next prompt!';
+        showToast("⏰ Time's up! Nobody grabbed the mic!", 'amber');
+      }
+    }
+
+    // ==========================================
+    // 8. MIC GRABBED & 20-SECOND ANSWER DRAWER
+    // ==========================================
+    function toggleMicTimer() {
+      if (!state.currentWordObj) {
+        dropNextWord();
+        return;
+      }
+      const panel = document.getElementById('answerVerifierPanel');
+      if (panel.classList.contains('hidden')) {
+        openAnswerVerifier();
+      } else {
+        closeAnswerVerifier();
+      }
+    }
+
+    function openAnswerVerifier() {
+      // Stop the grab timer and immediately start the 20-second answer timer
+      stopTimer();
+      renderAnswerPlayerPills();
+
+      const panel = document.getElementById('answerVerifierPanel');
+      panel.classList.remove('hidden');
+
+      const pauseBtn = document.getElementById('pauseResumeTimerBtn');
+      if (pauseBtn) pauseBtn.textContent = '⏸ Pause Timer';
+
+      const statusEl = document.getElementById('songSearchStatus');
+      statusEl.classList.add('hidden');
+      statusEl.textContent = '';
+
+      const choicesBox = document.getElementById('songChoicesContainer');
+      const choicesList = document.getElementById('songChoicesList');
+      if (choicesBox) choicesBox.classList.add('hidden');
+      if (choicesList) choicesList.innerHTML = '';
+
+      const input = document.getElementById('songAnswerInput');
+      input.value = '';
+      setTimeout(() => input.focus(), 60);
+
+      startTimer(ANSWER_TIMER_SECONDS, 'ANSWER');
+    }
+
+    function closeAnswerVerifier() {
+      const panel = document.getElementById('answerVerifierPanel');
+      if (panel) panel.classList.add('hidden');
+      const choicesBox = document.getElementById('songChoicesContainer');
+      const choicesList = document.getElementById('songChoicesList');
+      if (choicesBox) choicesBox.classList.add('hidden');
+      if (choicesList) choicesList.innerHTML = '';
+    }
+
+    function toggleTimerPauseOnly() {
+      const btn = document.getElementById('pauseResumeTimerBtn');
+      if (state.timerRunning) {
+        stopTimer();
+        if (btn) btn.textContent = '▶ Resume Timer';
+      } else if (state.remainingSeconds > 0 && state.timerMode !== 'IDLE') {
+        state.timerRunning = true;
+        if (btn) btn.textContent = '⏸ Pause Timer';
+        let lastWholeSecond = Math.ceil(state.remainingSeconds);
+        const stageCard = document.getElementById('promptStageCard');
+        state.timerInterval = setInterval(() => {
+          if (!state.timerRunning) return;
+          state.remainingSeconds = Math.max(0, state.remainingSeconds - 0.1);
+          updateTimerRingUI();
+
+          const currentWhole = Math.ceil(state.remainingSeconds);
+          if (currentWhole < lastWholeSecond && currentWhole > 0) {
+            lastWholeSecond = currentWhole;
+            if (currentWhole <= 3) {
+              stageCard?.classList.add('neon-stage-urgent');
+              sfxTick(true);
+            } else {
+              sfxTick(false);
+            }
+          }
+
+          if (state.remainingSeconds <= 0) {
+            stopTimer();
+            handleTimeExpired();
+          }
+        }, 100);
+      }
+    }
+
+    function renderAnswerPlayerPills() {
+      const container = document.getElementById('answerPlayerPills');
+      const indicator = document.getElementById('selectedPlayerIndicator');
+      if (!container) return;
+
+      if (!state.selectedAnswerPlayerId && state.players.length > 0) {
+        state.selectedAnswerPlayerId = state.players[0].id;
+      }
+
+      const selected = state.players.find((p) => p.id === state.selectedAnswerPlayerId);
+      if (indicator) {
+        indicator.textContent = selected ? `Selected: ${selected.name} (${selected.score} pts)` : 'Select a player';
+      }
+
+      container.innerHTML = state.players
+        .map((p) => {
+          const active = p.id === state.selectedAnswerPlayerId;
+          return `
+            <button type="button" onclick="selectAnswerPlayer('${p.id}')"
+              class="px-3 py-1.5 rounded-xl text-xs font-extrabold transition cursor-pointer ${
+                active
+                  ? 'bg-hotpink-500 text-white border border-pink-200 shadow-md shadow-hotpink-500/40'
+                  : 'bg-velvet-900 text-pink-200 border border-pink-500/30 hover:bg-velvet-800'
+              }">
+              🎤 ${escapeHtml(p.name)} (${p.score})
+            </button>
+          `;
+        })
+        .join('');
+    }
+
+    function selectAnswerPlayer(id) {
+      state.selectedAnswerPlayerId = id;
+      renderAnswerPlayerPills();
+    }
+
+    function getSelectedPlayer() {
+      return (
+        state.players.find((p) => p.id === state.selectedAnswerPlayerId) ||
+        state.players[0] ||
+        null
+      );
+    }
+
+    function normalizeForMatch(str) {
+      return String(str || '')
+        .toLowerCase()
+        .replace(/[^a-z0-9\s]/g, ' ')
+        .replace(/\s+/g, ' ')
+        .trim();
+    }
+
+    function escapeRegex(str) {
+      return String(str || '').replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    }
+
+    function levenshteinDistance(a, b) {
+      const m = a.length;
+      const n = b.length;
+      if (m === 0) return n;
+      if (n === 0) return m;
+      const dp = Array.from({ length: m + 1 }, () => new Array(n + 1).fill(0));
+      for (let i = 0; i <= m; i++) dp[i][0] = i;
+      for (let j = 0; j <= n; j++) dp[0][j] = j;
+      for (let i = 1; i <= m; i++) {
+        for (let j = 1; j <= n; j++) {
+          const cost = a[i - 1] === b[j - 1] ? 0 : 1;
+          dp[i][j] = Math.min(
+            dp[i - 1][j] + 1,
+            dp[i][j - 1] + 1,
+            dp[i - 1][j - 1] + cost
+          );
+        }
+      }
+      return dp[m][n];
+    }
+
+    function stringSimilarity(a, b) {
+      const normA = normalizeForMatch(a);
+      const normB = normalizeForMatch(b);
+      if (!normA || !normB) return 0;
+      if (normA === normB) return 1;
+      const maxLen = Math.max(normA.length, normB.length);
+      if (maxLen === 0) return 1;
+      return 1 - levenshteinDistance(normA, normB) / maxLen;
+    }
+
+    function isArtistSimilarToInput(rawInput, normInput, artistName, normTrackTitle) {
+      const normArtist = normalizeForMatch(artistName);
+      if (!normArtist || normArtist.length < 2) return false;
+      if (normInput.includes(normArtist)) return true;
+
+      // Extract potential artist segments separated by '-', 'by', or by stripping the matched song title
+      const candidateSegments = new Set();
+      const splitParts = String(rawInput || '').split(/\s+-\s+|\s+by\s+|[,|/]/i);
+      for (const part of splitParts) {
+        const cleaned = normalizeForMatch(part);
+        if (cleaned && cleaned !== normTrackTitle) {
+          candidateSegments.add(cleaned);
+        }
+      }
+
+      if (normTrackTitle && normInput.includes(normTrackTitle)) {
+        const remainder = normInput.replace(normTrackTitle, ' ').replace(/\s+/g, ' ').trim();
+        if (remainder.length >= 2) {
+          candidateSegments.add(remainder);
+        }
+      }
+
+      const inputTokens = normInput.split(' ').filter((w) => w.length >= 2);
+      const artistTokens = normArtist.split(' ').filter((w) => w.length >= 2);
+
+      // Check token overlap & fuzzy token similarity
+      if (artistTokens.length > 0) {
+        let matchedTokens = 0;
+        for (const aTok of artistTokens) {
+          const hasCloseToken = inputTokens.some(
+            (iTok) => iTok === aTok || (aTok.length >= 3 && stringSimilarity(iTok, aTok) >= 0.75)
+          );
+          if (hasCloseToken) matchedTokens++;
+        }
+        if (matchedTokens / artistTokens.length >= 0.72) {
+          return true;
+        }
+      }
+
+      // Check full Levenshtein similarity against candidate segments
+      for (const seg of candidateSegments) {
+        if (seg.length >= 2 && stringSimilarity(seg, normArtist) >= 0.72) {
+          return true;
+        }
+      }
+
+      return false;
+    }
+
+    function containsPromptWord(text, promptWord) {
+      const cleanText = normalizeForMatch(text);
+      const cleanWord = normalizeForMatch(promptWord);
+      if (!cleanText || !cleanWord) return false;
+      const regex = new RegExp(`\\b${escapeRegex(cleanWord)}\\b`, 'i');
+      return regex.test(cleanText);
+    }
+
+    function triggerWrongAnswerFlow(reasonText) {
+      stopTimer();
+      closeAnswerVerifier();
+      const player = getSelectedPlayer();
+      if (player) {
+        updatePlayerScore(player.id, -1, false);
+      }
+      sfxPenalty();
+      showWrongAnswerScreen(reasonText);
+    }
+
+    function showWrongAnswerScreen(reasonText) {
+      if (state.wrongOverlayTimeout) {
+        clearTimeout(state.wrongOverlayTimeout);
+        state.wrongOverlayTimeout = null;
+      }
+
+      const modal = document.getElementById('wrongAnswerModal');
+      const reasonEl = document.getElementById('wrongAnswerReasonText');
+      if (reasonEl && reasonText) {
+        reasonEl.textContent = reasonText;
+      }
+      if (modal) {
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+      }
+
+      state.wrongOverlayTimeout = setTimeout(() => {
+        if (modal) {
+          modal.classList.add('hidden');
+          modal.classList.remove('flex');
+        }
+        state.wrongOverlayTimeout = null;
+        dropNextWord();
+      }, 2500);
+    }
+
+    // ==========================================
+    // 9. INSTANT ENTER ANSWER & REAL SONG VERIFIER
+    // ==========================================
+    async function handleInstantEnterAnswer(e) {
+      e.preventDefault();
+      const input = document.getElementById('songAnswerInput');
+      const submitBtn = document.getElementById('submitAnswerBtn');
+      const statusEl = document.getElementById('songSearchStatus');
+      const choicesBox = document.getElementById('songChoicesContainer');
+      const choicesList = document.getElementById('songChoicesList');
+
+      if (choicesBox) choicesBox.classList.add('hidden');
+      if (choicesList) choicesList.innerHTML = '';
+
+      const rawAnswer = input.value.trim();
+
+      if (!rawAnswer) {
+        statusEl.classList.remove('hidden');
+        statusEl.textContent = '⚠️ Type a lyric, song title, or Song - Artist first!';
+        return;
+      }
+
+      const promptWord = state.currentWordObj?.word || '';
+      const player = getSelectedPlayer();
+      if (!player) {
+        showToast('Add a player first!', 'amber');
+        return;
+      }
+
+      // Check if retired already
+      const normRaw = normalizeForMatch(rawAnswer);
+      if (state.retiredSongs.some((s) => normalizeForMatch(s) === normRaw)) {
+        triggerWrongAnswerFlow(`"${rawAnswer}" was already sung tonight! No repeats (-1 pt).`);
+        return;
+      }
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = '...';
+      statusEl.classList.remove('hidden');
+      statusEl.textContent = '🔍 Checking song & lyrics...';
+
+      try {
+        // 1. Search iTunes for real song match
+        const res = await fetch(
+          `https://itunes.apple.com/search?term=${encodeURIComponent(rawAnswer)}&entity=song&limit=8`
+        );
+        const data = await res.json();
+        const tracks = data.results || [];
+
+        const typedHasWord = containsPromptWord(rawAnswer, promptWord);
+        let matchedTrack = null;
+        let includesArtist = false;
+        let isSongTitleMatch = false;
+        const candidateTitleMatches = [];
+
+        for (const t of tracks) {
+          const trackTitle = t.trackName || '';
+          const artistName = t.artistName || '';
+          const normTitle = normalizeForMatch(trackTitle);
+          const normArtist = normalizeForMatch(artistName);
+
+          const titleMatchesInput =
+            normTitle.length >= 2 &&
+            (normRaw.includes(normTitle) || normTitle.includes(normRaw));
+          const artistMatchesInput = isArtistSimilarToInput(
+            rawAnswer,
+            normRaw,
+            artistName,
+            normTitle
+          );
+          const titleHasPrompt = containsPromptWord(trackTitle, promptWord);
+
+          if (titleMatchesInput || titleHasPrompt) {
+            candidateTitleMatches.push({
+              track: t,
+              includesArtist: artistMatchesInput,
+              titleHasPrompt
+            });
+            // Prefer a track whose artist also fuzzily matches the typed input
+            if (!matchedTrack || (artistMatchesInput && !includesArtist)) {
+              matchedTrack = t;
+              isSongTitleMatch = true;
+              includesArtist = artistMatchesInput;
+            }
+          }
+        }
+
+        // If user typed a song title without naming the artist, show clickable song choices (+2 Song Only)
+        if (candidateTitleMatches.length > 0 && !includesArtist) {
+          const validOptions = [];
+          for (const item of candidateTitleMatches) {
+            let hasWordInLyrics = item.titleHasPrompt || typedHasWord;
+            let syncedLrc = null;
+            if (!hasWordInLyrics) {
+              try {
+                const lrcRes = await fetch(
+                  `https://lrclib.net/api/get?track_name=${encodeURIComponent(
+                    item.track.trackName
+                  )}&artist_name=${encodeURIComponent(item.track.artistName)}`
+                );
+                if (lrcRes.ok) {
+                  const lrcData = await lrcRes.json();
+                  syncedLrc = lrcData.syncedLyrics || null;
+                  const fullLyrics = `${lrcData.plainLyrics || ''} ${lrcData.syncedLyrics || ''}`;
+                  if (containsPromptWord(fullLyrics, promptWord)) {
+                    hasWordInLyrics = true;
+                  }
+                }
+              } catch (e) {}
+            } else {
+              try {
+                const lrcRes = await fetch(
+                  `https://lrclib.net/api/get?track_name=${encodeURIComponent(
+                    item.track.trackName
+                  )}&artist_name=${encodeURIComponent(item.track.artistName)}`
+                );
+                if (lrcRes.ok) {
+                  const lrcData = await lrcRes.json();
+                  syncedLrc = lrcData.syncedLyrics || null;
+                }
+              } catch (e) {}
+            }
+
+            if (hasWordInLyrics) {
+              const label = `${item.track.trackName} - ${item.track.artistName}`;
+              const isRetired = state.retiredSongs.some(
+                (s) => normalizeForMatch(s) === normalizeForMatch(label)
+              );
+              if (!isRetired) {
+                validOptions.push({
+                  track: item.track,
+                  label,
+                  syncedLyrics: syncedLrc
+                });
+              }
+            }
+          }
+
+          if (validOptions.length > 0) {
+            statusEl.classList.add('hidden');
+            renderSongChoiceButtons(validOptions, player, promptWord, 2, 'Song Only (+2 pts)');
+            return;
+          }
+        }
+
+        // If no direct title match, check if typed lyric matches a track + contains prompt word
+        if (!matchedTrack && tracks.length > 0 && typedHasWord) {
+          matchedTrack = tracks[0];
+        }
+
+        // Verify lyric via LRCLIB if matchedTrack doesn't have prompt word in title
+        let verifiedInLyrics = typedHasWord;
+        let syncedLyricsText = null;
+
+        if (matchedTrack) {
+          try {
+            const lrcRes = await fetch(
+              `https://lrclib.net/api/get?track_name=${encodeURIComponent(
+                matchedTrack.trackName
+              )}&artist_name=${encodeURIComponent(matchedTrack.artistName)}`
+            );
+            if (lrcRes.ok) {
+              const lrcData = await lrcRes.json();
+              syncedLyricsText = lrcData.syncedLyrics || null;
+              const fullLyrics = `${lrcData.plainLyrics || ''} ${lrcData.syncedLyrics || ''}`;
+              if (containsPromptWord(fullLyrics, promptWord)) {
+                verifiedInLyrics = true;
+              }
+            }
+          } catch (err) {
+            // Fallback to typed word check
+          }
+        }
+
+        const titleHasPromptWord = matchedTrack
+          ? containsPromptWord(matchedTrack.trackName, promptWord)
+          : false;
+
+        // Determine score tier:
+        // +3 Artist & Song | +2 Song Only | +1 Lyric Only
+        if (matchedTrack && (titleHasPromptWord || verifiedInLyrics)) {
+          const songLabel = `${matchedTrack.trackName} - ${matchedTrack.artistName}`;
+          if (state.retiredSongs.some((s) => normalizeForMatch(s) === normalizeForMatch(songLabel))) {
+            triggerWrongAnswerFlow(`"${songLabel}" was already sung tonight! (-1 pt)`);
+            return;
+          }
+
+          let pointsAwarded = 2;
+          let tierReason = 'Song Only (+2 pts)';
+          if (includesArtist && isSongTitleMatch) {
+            pointsAwarded = 3;
+            tierReason = 'Artist & Song (+3 pts)';
+          } else if (!isSongTitleMatch && typedHasWord) {
+            pointsAwarded = 1;
+            tierReason = 'Lyric Only (+1 pt)';
+          }
+
+          stopTimer();
+          closeAnswerVerifier();
+          addRetiredSongDirect(songLabel);
+          sfxPointScored();
+          showToast(`🎤 ${player.name}: ${tierReason} • "${songLabel}"`, 'pink');
+
+          if (matchedTrack.previewUrl) {
+            playBackgroundCelebration(
+              matchedTrack.previewUrl,
+              songLabel,
+              matchedTrack.artworkUrl100,
+              promptWord,
+              syncedLyricsText
+            );
+          }
+
+          updatePlayerScore(player.id, pointsAwarded, true);
+          return;
+        }
+
+        // Fallback: if player typed a lyric containing the prompt word even without an exact track match
+        if (typedHasWord) {
+          stopTimer();
+          closeAnswerVerifier();
+          addRetiredSongDirect(`${rawAnswer} (${promptWord})`);
+          sfxPointScored();
+          showToast(`🎤 ${player.name}: Lyric Only (+1 pt) for "${promptWord}"!`, 'emerald');
+          updatePlayerScore(player.id, 1, true);
+          return;
+        }
+
+        triggerWrongAnswerFlow(
+          `"${rawAnswer}" doesn't match a valid song or contain "${promptWord}" (-1 pt).`
+        );
+      } catch (err) {
+        if (typedHasWord) {
+          stopTimer();
+          closeAnswerVerifier();
+          addRetiredSongDirect(`${rawAnswer} (${promptWord})`);
+          sfxPointScored();
+          showToast(`🎤 ${player.name}: Lyric Only (+1 pt) for "${promptWord}"!`, 'emerald');
+          updatePlayerScore(player.id, 1, true);
+        } else {
+          triggerWrongAnswerFlow(
+            `Could not verify "${rawAnswer}" for "${promptWord}" (-1 pt).`
+          );
+        }
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Enter';
+      }
+    }
+
+    function renderSongChoiceButtons(options, player, promptWord, pointsAwarded, tierReason) {
+      const choicesBox = document.getElementById('songChoicesContainer');
+      const choicesList = document.getElementById('songChoicesList');
+      if (!choicesBox || !choicesList) return;
+
+      choicesList.innerHTML = '';
+      options.forEach((opt) => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className =
+          'w-full p-2.5 rounded-xl bg-velvet-900 hover:bg-hotpink-500/30 border border-pink-500/40 hover:border-hotpink-400 text-left flex items-center justify-between gap-3 transition cursor-pointer';
+        btn.innerHTML = `
+          <div class="flex items-center gap-2.5 min-w-0">
+            ${
+              opt.track.artworkUrl100
+                ? `<img src="${escapeHtml(opt.track.artworkUrl100)}" alt="" class="w-9 h-9 rounded-lg object-cover shrink-0 border border-white/15" />`
+                : `<span class="w-9 h-9 rounded-lg bg-hotpink-500/25 flex items-center justify-center text-sm shrink-0">🎶</span>`
+            }
+            <div class="min-w-0">
+              <div class="text-xs sm:text-sm font-extrabold text-white truncate">${escapeHtml(opt.track.trackName)}</div>
+              <div class="text-[11px] font-semibold text-pink-200/75 truncate">${escapeHtml(opt.track.artistName)}</div>
+            </div>
+          </div>
+          <span class="px-2.5 py-1 rounded-lg bg-hotpink-500/25 border border-hotpink-400/50 text-[11px] font-black text-hotpink-200 shrink-0">
+            +${pointsAwarded} Play
+          </span>
+        `;
+        btn.addEventListener('click', () => {
+          choicesBox.classList.add('hidden');
+          choicesList.innerHTML = '';
+          stopTimer();
+          closeAnswerVerifier();
+          addRetiredSongDirect(opt.label);
+          sfxPointScored();
+          showToast(`🎤 ${player.name}: ${tierReason} • "${opt.label}"`, 'pink');
+
+          if (opt.track.previewUrl) {
+            playBackgroundCelebration(
+              opt.track.previewUrl,
+              opt.label,
+              opt.track.artworkUrl100,
+              promptWord,
+              opt.syncedLyrics
+            );
+          }
+
+          updatePlayerScore(player.id, pointsAwarded, true);
+        });
+        choicesList.appendChild(btn);
+      });
+
+      choicesBox.classList.remove('hidden');
+    }
+
+    function penalizeSelectedPlayerBluff() {
+      const player = getSelectedPlayer();
+      triggerWrongAnswerFlow(
+        `${player ? player.name : 'Player'} bluffed or froze on "${state.currentWordObj?.word || ''}"! (-1 pt)`
+      );
+    }
+
+    // ==========================================
+    // 10. SYNCED LYRIC SEEK & BACKGROUND PLAYBACK
+    // ==========================================
+    function findTimestampForPromptWord(syncedLyrics, promptWord) {
+      if (!syncedLyrics || !promptWord) return null;
+      const lines = syncedLyrics.split('\n');
+      for (const line of lines) {
+        const match = line.match(/^\[(\d+):(\d+(?:\.\d+)?)\]\s*(.*)$/);
+        if (match) {
+          const mins = parseInt(match[1], 10);
+          const secs = parseFloat(match[2]);
+          const lyricText = match[3];
+          if (containsPromptWord(lyricText, promptWord)) {
+            return Math.max(0, mins * 60 + secs - 1.0);
+          }
+        }
+      }
+      return null;
+    }
+
+    function playBackgroundCelebration(previewUrl, title, artworkUrl, promptWord, syncedLyrics) {
+      stopBackgroundCelebration();
+      const audio = new Audio(previewUrl);
+      audio.loop = true;
+      audio.volume = 0.7;
+      state.bgAudio = audio;
+
+      const seekTime = findTimestampForPromptWord(syncedLyrics, promptWord);
+      audio.addEventListener('loadedmetadata', () => {
+        if (seekTime !== null && isFinite(audio.duration) && audio.duration > 0) {
+          // Map lyric timestamp into the 30s preview window if needed
+          const target = seekTime < audio.duration ? seekTime : seekTime % audio.duration;
+          try {
+            audio.currentTime = Math.max(0, target);
+          } catch (e) {}
+        }
+      });
+
+      audio.play().catch(() => {});
+
+      const bar = document.getElementById('nowPlayingBar');
+      const titleEl = document.getElementById('nowPlayingTitle');
+      const artEl = document.getElementById('nowPlayingArt');
+      const fallbackIcon = document.getElementById('nowPlayingFallbackIcon');
+
+      titleEl.textContent = title;
+      if (artworkUrl) {
+        artEl.src = artworkUrl;
+        artEl.classList.remove('hidden');
+        fallbackIcon.classList.add('hidden');
+      } else {
+        artEl.classList.add('hidden');
+        fallbackIcon.classList.remove('hidden');
+      }
+      bar.classList.remove('hidden');
+    }
+
+    function stopBackgroundCelebration() {
+      if (state.bgAudio) {
+        state.bgAudio.pause();
+        state.bgAudio.src = '';
+        state.bgAudio = null;
+      }
+      document.getElementById('nowPlayingBar')?.classList.add('hidden');
+    }
+
+    // ==========================================
+    // 11. SCOREBOARD & 50-POINT WINNER SCREEN
+    // ==========================================
+    function addPlayer(e) {
+      e.preventDefault();
+      const input = document.getElementById('playerNameInput');
+      const name = input.value.trim();
+      if (!name) return;
+      const newPlayer = {
+        id: 'p_' + Date.now() + '_' + Math.random().toString(36).slice(2, 6),
+        name,
+        score: 0
+      };
+      state.players.push(newPlayer);
+      if (!state.selectedAnswerPlayerId) state.selectedAnswerPlayerId = newPlayer.id;
+      input.value = '';
+      renderPlayers();
+      renderAnswerPlayerPills();
+    }
+
+    function removePlayer(id) {
+      if (state.players.length <= 1) {
+        showToast('At least 1 team must remain!', 'amber');
+        return;
+      }
+      state.players = state.players.filter((p) => p.id !== id);
+      if (state.selectedAnswerPlayerId === id) {
+        state.selectedAnswerPlayerId = state.players[0]?.id || null;
+      }
+      renderPlayers();
+      renderAnswerPlayerPills();
+    }
+
+    function updatePlayerScore(id, delta, checkVictory = true) {
+      const player = state.players.find((p) => p.id === id);
+      if (!player) return;
+      player.score += delta;
+      renderPlayers();
+      renderAnswerPlayerPills();
+
+      if (checkVictory && player.score >= WINNING_SCORE) {
+        declareWinner(player);
+      }
+    }
+
+    function resetAllScores() {
+      state.players.forEach((p) => (p.score = 0));
+      renderPlayers();
+      renderAnswerPlayerPills();
+      showToast('All scores reset to 0!', 'pink');
+    }
+
+    function renderPlayers() {
+      const container = document.getElementById('playersList');
+      if (!container) return;
+
+      const sorted = [...state.players].sort((a, b) => b.score - a.score);
+      const topScore = sorted[0]?.score || 0;
+
+      container.innerHTML = sorted
+        .map((p, idx) => {
+          const isLeader = idx === 0 && p.score > 0 && p.score === topScore;
+          const progressPct = Math.max(0, Math.min(100, (p.score / WINNING_SCORE) * 100));
+          return `
+            <div class="p-3 rounded-2xl bg-velvet-900/90 border ${
+              isLeader ? 'border-amber-400/70 shadow-md shadow-amber-500/15' : 'border-pink-500/25'
+            } flex flex-col gap-2">
+              <div class="flex items-center justify-between gap-2">
+                <div class="flex items-center gap-2 min-w-0">
+                  <span class="text-sm">${isLeader ? '👑' : '🎤'}</span>
+                  <span class="font-extrabold text-sm sm:text-base text-white truncate">${escapeHtml(p.name)}</span>
+                </div>
+                <div class="flex items-center gap-1.5 shrink-0">
+                  <span class="font-display font-extrabold text-xl text-hotpink-400 mr-1">${p.score}</span>
+                  <button onclick="updatePlayerScore('${p.id}', 1)" title="+1 Lyric"
+                    class="px-2 py-1 rounded-lg bg-emerald-500/20 hover:bg-emerald-500/40 border border-emerald-400/40 text-xs font-black text-emerald-200 transition">+1</button>
+                  <button onclick="updatePlayerScore('${p.id}', 2)" title="+2 Song"
+                    class="px-2 py-1 rounded-lg bg-hotpink-500/25 hover:bg-hotpink-500/45 border border-hotpink-400/40 text-xs font-black text-pink-100 transition">+2</button>
+                  <button onclick="updatePlayerScore('${p.id}', 3)" title="+3 Artist & Song"
+                    class="px-2 py-1 rounded-lg bg-amber-500/25 hover:bg-amber-500/45 border border-amber-400/40 text-xs font-black text-amber-200 transition">+3</button>
+                  <button onclick="updatePlayerScore('${p.id}', -1, false)" title="-1 Penalty"
+                    class="px-2 py-1 rounded-lg bg-red-500/20 hover:bg-red-500/40 border border-red-400/40 text-xs font-black text-red-200 transition">-1</button>
+                  <button onclick="removePlayer('${p.id}')" title="Remove Team"
+                    class="ml-0.5 text-xs text-pink-300/50 hover:text-red-400 px-1">✕</button>
+                </div>
+              </div>
+              <div class="w-full h-1.5 rounded-full bg-velvet-950 overflow-hidden">
+                <div class="h-full bg-gradient-to-r from-hotpink-500 to-amber-400 transition-all duration-300" style="width: ${progressPct}%"></div>
+              </div>
+            </div>
+          `;
+        })
+        .join('');
+    }
+
+    function endGameAndDeclareWinner() {
+      if (state.players.length === 0) return;
+      const sorted = [...state.players].sort((a, b) => b.score - a.score);
+      declareWinner(sorted[0]);
+    }
+
+    function declareWinner(winnerPlayer) {
+      stopTimer();
+      closeAnswerVerifier();
+      sfxPointScored();
+
+      const sorted = [...state.players].sort((a, b) => b.score - a.score);
+      recordGameInHistory(winnerPlayer, sorted);
+
+      document.getElementById('winnerTeamNameDisplay').textContent = winnerPlayer.name;
+      document.getElementById('winnerScoreSummary').textContent = `${winnerPlayer.score} POINTS!`;
+
+      const standingsEl = document.getElementById('winnerStandingsList');
+      standingsEl.innerHTML = sorted
+        .map(
+          (p, i) => `
+          <div class="flex items-center justify-between text-sm font-bold py-1 border-b border-pink-500/15 last:border-none">
+            <span class="text-pink-100">${i === 0 ? '👑' : `#${i + 1}`} ${escapeHtml(p.name)}</span>
+            <span class="font-display font-extrabold text-hotpink-300">${p.score} pts</span>
+          </div>
+        `
+        )
+        .join('');
+
+      const modal = document.getElementById('winnerModal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeWinnerModal() {
+      const modal = document.getElementById('winnerModal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    function playAgainFromWinner() {
+      closeWinnerModal();
+      resetAllScores();
+      state.retiredSongs = [];
+      state.roundNumber = 0;
+      state.currentGameRecorded = false;
+      renderRetiredSongs();
+      dropNextWord();
+    }
+
+    // ==========================================
+    // 11B. GAME HISTORY STORAGE & RENDERING
+    // ==========================================
+    function loadGameHistory() {
+      try {
+        const raw = localStorage.getItem(STORAGE_GAME_HISTORY_KEY);
+        state.gameHistory = raw ? JSON.parse(raw) : [];
+      } catch (e) {
+        state.gameHistory = [];
+      }
+    }
+
+    function saveGameHistory() {
+      try {
+        localStorage.setItem(STORAGE_GAME_HISTORY_KEY, JSON.stringify(state.gameHistory));
+      } catch (e) {
+        // Ignore storage errors
+      }
+    }
+
+    function recordGameInHistory(winnerPlayer, sortedPlayers) {
+      if (state.currentGameRecorded) return;
+      state.currentGameRecorded = true;
+
+      const now = new Date();
+      const entry = {
+        id: 'game_' + Date.now() + '_' + Math.random().toString(36).slice(2, 6),
+        winnerName: winnerPlayer.name,
+        winnerScore: winnerPlayer.score,
+        mode: state.difficulty,
+        rounds: state.roundNumber,
+        playedAt: now.toLocaleString([], { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' }),
+        standings: sortedPlayers.map((p) => ({ name: p.name, score: p.score }))
+      };
+
+      state.gameHistory.unshift(entry);
+      if (state.gameHistory.length > 50) {
+        state.gameHistory = state.gameHistory.slice(0, 50);
+      }
+      saveGameHistory();
+      renderGameHistory();
+    }
+
+    function clearGameHistory() {
+      state.gameHistory = [];
+      saveGameHistory();
+      renderGameHistory();
+      showToast('Game history cleared!', 'pink');
+    }
+
+    function renderGameHistory() {
+      const gameListEl = document.getElementById('gameHistoryList');
+      const headerBadgeEl = document.getElementById('headerHistoryCountBadge');
+      const modalBadgeEl = document.getElementById('historyModalCountBadge');
+
+      if (headerBadgeEl) headerBadgeEl.textContent = state.gameHistory.length;
+      if (modalBadgeEl) modalBadgeEl.textContent = state.gameHistory.length;
+
+      const emptyMarkup =
+        '<span class="text-xs text-pink-300/50 italic">No completed games in history yet.</span>';
+
+      if (state.gameHistory.length === 0) {
+        if (gameListEl) gameListEl.innerHTML = emptyMarkup;
+        return;
+      }
+
+      const cardsHtml = state.gameHistory
+        .map((g) => {
+          const scoresLine = g.standings
+            .map((s) => `${escapeHtml(s.name)}: ${s.score}`)
+            .join(' • ');
+          return `
+            <div class="p-3 rounded-2xl bg-velvet-900/90 border border-pink-500/25 flex flex-col gap-1">
+              <div class="flex items-center justify-between gap-2">
+                <div class="font-extrabold text-xs sm:text-sm text-white truncate">
+                  👑 <span class="text-amber-300">${escapeHtml(g.winnerName)}</span> (${g.winnerScore} pts)
+                </div>
+                <span class="text-[10px] font-bold text-pink-300/70 shrink-0">${escapeHtml(g.playedAt)}</span>
+              </div>
+              <div class="text-[11px] text-pink-200/75 truncate">${scoresLine}</div>
+              <div class="text-[10px] font-bold uppercase tracking-wider text-hotpink-300/80">
+                ${escapeHtml(g.mode)} • ${g.rounds} rounds
+              </div>
+            </div>
+          `;
+        })
+        .join('');
+
+      if (gameListEl) gameListEl.innerHTML = cardsHtml;
+    }
+
+    // ==========================================
+    // 12. RETIRED SONGS LOG
+    // ==========================================
+    function addRetiredSong(e) {
+      e.preventDefault();
+      const input = document.getElementById('retiredSongInput');
+      const val = input.value.trim();
+      if (!val) return;
+      addRetiredSongDirect(val);
+      input.value = '';
+    }
+
+    function addRetiredSongDirect(songLabel) {
+      if (!state.retiredSongs.some((s) => s.toLowerCase() === songLabel.toLowerCase())) {
+        state.retiredSongs.unshift(songLabel);
+        renderRetiredSongs();
+      }
+    }
+
+    function clearRetiredSongs() {
+      state.retiredSongs = [];
+      renderRetiredSongs();
+    }
+
+    function renderRetiredSongs() {
+      const listEl = document.getElementById('retiredSongsList');
+      const badgeEl = document.getElementById('retiredCountBadge');
+      if (badgeEl) badgeEl.textContent = state.retiredSongs.length;
+      if (!listEl) return;
+
+      if (state.retiredSongs.length === 0) {
+        listEl.innerHTML =
+          '<span class="text-xs text-pink-300/50 italic">No songs retired yet—first hit goes here!</span>';
+        return;
+      }
+
+      listEl.innerHTML = state.retiredSongs
+        .map(
+          (song) => `
+          <span class="px-2.5 py-1 rounded-xl bg-velvet-900 border border-pink-500/30 text-xs font-bold text-pink-100">
+            ${escapeHtml(song)}
+          </span>
+        `
+        )
+        .join('');
+    }
+
+    // ==========================================
+    // 13. MODALS, TOASTS & KEYBOARD SHORTCUTS
+    // ==========================================
+    function openHistoryModal() {
+      renderGameHistory();
+      const modal = document.getElementById('historyModal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeHistoryModal() {
+      const modal = document.getElementById('historyModal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    function openRulesModal() {
+      const modal = document.getElementById('rulesModal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeRulesModal() {
+      const modal = document.getElementById('rulesModal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    function showToast(message, tone = 'pink') {
+      const container = document.getElementById('toastContainer');
+      if (!container) return;
+
+      const colorMap = {
+        pink: 'bg-velvet-900/95 border-hotpink-400 text-white shadow-hotpink-500/30',
+        amber: 'bg-velvet-900/95 border-amber-400 text-amber-100 shadow-amber-500/30',
+        emerald: 'bg-velvet-900/95 border-emerald-400 text-emerald-100 shadow-emerald-500/30'
+      };
+
+      const toast = document.createElement('div');
+      toast.className = `px-4 py-2.5 rounded-2xl border-2 text-xs sm:text-sm font-extrabold shadow-xl animate-pop-in text-center ${
+        colorMap[tone] || colorMap.pink
+      }`;
+      toast.textContent = message;
+      container.appendChild(toast);
+
+      setTimeout(() => {
+        toast.style.opacity = '0';
+        toast.style.transition = 'opacity 0.25s ease';
+        setTimeout(() => toast.remove(), 260);
+      }, 2800);
+    }
+
+    function escapeHtml(str) {
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
+
+    document.addEventListener('keydown', (e) => {
+      const tag = document.activeElement?.tagName;
+      if (tag === 'INPUT' || tag === 'TEXTAREA') return;
+      if (document.getElementById('gameScreen')?.classList.contains('hidden')) return;
+
+      if (e.code === 'Space') {
+        e.preventDefault();
+        dropNextWord();
+      } else if (e.code === 'Enter') {
+        e.preventDefault();
+        toggleMicTimer();
+      }
+    });
+
+    window.addEventListener('DOMContentLoaded', () => {
+      loadGameHistory();
+      renderSetupPlayers();
+      renderPlayers();
+      renderRetiredSongs();
+      renderGameHistory();
+      updateDeckCounterUI();
+    });
+  </script>
+</body>
+</html>
